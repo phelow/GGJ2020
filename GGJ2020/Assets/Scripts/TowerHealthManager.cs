@@ -22,4 +22,16 @@ public class TowerHealthManager : HealthManager
     {
         return isInvulnerable;
     }
+
+    public void RepairFort()
+    {
+        if (!ResourceTracker.instance.HasCharge())
+        {
+            return;
+        }
+
+        ResourceTracker.instance.UseCharge();
+        health = Mathf.Max(health + 30.0f, MaxHealth);
+        healthBar.SetValue(GetHealthRatio());
+    }
 }

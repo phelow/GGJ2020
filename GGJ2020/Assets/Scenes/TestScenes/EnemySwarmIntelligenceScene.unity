@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseDistance: 0.5
-  collectionDistance: 100
+  collectionDistance: 10
   distanceOfCameraFromGround: 10
   ClickButton: Fire1
   lastHovering: {fileID: 0}
@@ -1101,12 +1101,12 @@ PrefabInstance:
     - target: {fileID: 5322901359577015225, guid: c3e687f089b8fd24a9239675adaaf767,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.97
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 5322901359577015225, guid: c3e687f089b8fd24a9239675adaaf767,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2
+      value: 9.61
       objectReference: {fileID: 0}
     - target: {fileID: 5322901359577015225, guid: c3e687f089b8fd24a9239675adaaf767,
         type: 3}

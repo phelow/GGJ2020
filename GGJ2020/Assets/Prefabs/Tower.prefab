@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 6706361682695259550}
   - component: {fileID: 7830708415639433395}
   - component: {fileID: 8775964323209989765}
+  - component: {fileID: 22195801838459944}
+  - component: {fileID: 4834314294068687920}
   m_Layer: 12
   m_Name: Tower
   m_TagString: Untagged
@@ -190,6 +192,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 7830708415639433395}
   healthManager: {fileID: 6706361682695259550}
+--- !u!114 &22195801838459944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341146406007824668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &4834314294068687920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341146406007824668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac932538bde4ae40b3df9b6b764872f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clickability: 0
+  secondsToShowClicked: 0.2
+  OnClicked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6706361682695259550}
+        m_MethodName: RepairFort
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  outline: {fileID: 0}
 --- !u!1001 &7845258747616220900
 PrefabInstance:
   m_ObjectHideFlags: 0

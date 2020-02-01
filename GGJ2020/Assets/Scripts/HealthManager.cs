@@ -4,7 +4,7 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     [SerializeField]
-    private ProgressBarPro healthBar;
+    protected ProgressBarPro healthBar;
 
     [SerializeField]
     private Pullable pullable;
