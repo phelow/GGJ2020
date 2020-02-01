@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     public float drainRate = 100; //How fast the jetpact uses juices when moving
     [Range(1, 500)]
     public float chargeRate = 200; //How fast the jetpack refuels when idle
+
+    [Tooltip("normal of the 2d plane that the game will be played on can only be 1 of the 3 axises due to rigidbody limitations")]
+    public RigidbodyConstraints normalOf2dPlane = RigidbodyConstraints.FreezePositionZ;
     #endregion
 
     void Start()
@@ -30,7 +33,7 @@ public class Player : MonoBehaviour
 
         //Set attributes
         mRigidBody = GetComponent<Rigidbody>();
-        mRigidBody.constraints = RigidbodyConstraints.FreezePositionY;
+        mRigidBody.constraints = normalOf2dPlane;
         mCurrentJuice = juice;
     }
 
@@ -89,21 +92,32 @@ public class Player : MonoBehaviour
     //Faces the player to the direction that the mouse is pointing at
     private void faceDirection()
     {
-        var target = Input.mousePosition;
-        Ray ray = Camera.main.ScreenPointToRay(target);
-        RaycastHit hit;
+        // determine players mouse cursor position in world
+        var mouseInWorld = Input.mousePosition;
+        mouseInWorld.z = Camera.main.transform.position.z;
+        mouseInWorld = Camera.main.ScreenToWorldPoint(mouseInWorld);
 
-        if (Physics.Raycast(ray, out hit))
+        // determine what plane is in the 3d space
+        Vector3 planeNormal;
+        switch (normalOf2dPlane)
         {
-            target = hit.point - transform.position;
+            case RigidbodyConstraints.FreezePositionX:
+                planeNormal = Vector3.right;
+                break;
+            case RigidbodyConstraints.FreezePositionY:
+                planeNormal = Vector3.up;
+                break;
+            case RigidbodyConstraints.FreezePositionZ:
+                planeNormal = Vector3.forward;
+                break;
+            default:
+                throw new System.NotImplementedException("Not sure what to do with that restraint, do a position one instead");
         }
 
-        target.y = 0;
-
-        //print("Mouse to world postion: " + target.ToString());
-        Quaternion rotation = Quaternion.LookRotation(target);
+        // use that plane for 2d
+        Vector3 directionToMouse = Vector3.ProjectOnPlane(mouseInWorld - this.transform.position, planeNormal);
+        Quaternion rotation = Quaternion.LookRotation(directionToMouse, planeNormal);
         mRigidBody.MoveRotation(rotation);
-
     }
     #endregion
 }
