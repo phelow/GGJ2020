@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6614293105460158074}
   - component: {fileID: 7051615883223751838}
   - component: {fileID: 8238250433621837829}
-  - component: {fileID: 8447227839803217102}
   m_Layer: 0
   m_Name: AsteroidTest
   m_TagString: Untagged
@@ -131,15 +130,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8447227839803217102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5187027575820774551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ef431af43eccb4daeafa7132ef9c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
