@@ -14,6 +14,9 @@ public class Collector : MonoBehaviour
     [Tooltip("Needed to calculate the mouses cursors world position")]
     public float distanceOfCameraFromGround = 10f;
 
+    [Tooltip("Input.GetButtonUp to use for clicking")]
+    public string ClickButton = "Fire1";
+
     public Collectable lastHovering;
     public Collectable[] allItems;
 
@@ -28,7 +31,7 @@ public class Collector : MonoBehaviour
     {
         updateItemClickability();
 
-        if (lastHovering != null && Input.GetButtonUp("Fire1"))
+        if (lastHovering != null && Input.GetButtonUp(ClickButton))
         {
             lastHovering.ClickItGood();
         }
@@ -41,7 +44,7 @@ public class Collector : MonoBehaviour
 
         foreach (var collectable in allItems)
         {
-            distanceToPlayer = 
+            distanceToPlayer =
                 Vector3.Distance(this.transform.position, collectable.transform.position);
 
             // highlight objects collecatable by player
@@ -49,12 +52,12 @@ public class Collector : MonoBehaviour
                 // TODO: && check is in Line of Sight
                 )
             {
-                collectable.Clickability = Collectable.ClickabilityEnum.Clickable;
+                collectable.SetClickability(Collectable.ClickabilityEnum.Clickable);
                 inCollectorRange.Add(collectable);
             }
             else
             {
-                collectable.Clickability = Collectable.ClickabilityEnum.OutOfRange;
+                collectable.SetClickability(Collectable.ClickabilityEnum.OutOfRange);
             }
         }
 
@@ -75,7 +78,7 @@ public class Collector : MonoBehaviour
         if (Vector3.Distance(closestToMouse.transform.position, mouseInWorld) < mouseDistance)
         {
             lastHovering = closestToMouse;
-            closestToMouse.Clickability = Collectable.ClickabilityEnum.Hovering;
+            closestToMouse.SetClickability(Collectable.ClickabilityEnum.Hovering);
         }
         else
         {
