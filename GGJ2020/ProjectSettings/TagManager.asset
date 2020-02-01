@@ -15,9 +15,9 @@ TagManager:
   - 
   - Missiles
   - Enemies
-  - 
-  - 
-  - 
+  - EnemyMissile
+  - PlayerMissiles
+  - PlayerAllies
   - 
   - 
   - 
