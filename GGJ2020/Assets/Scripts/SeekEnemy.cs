@@ -11,21 +11,54 @@ public class SeekEnemy : MonoBehaviour
     internal void AssignTarget(GameObject target)
     {
         StartCoroutine(SeekTarget(target));
+        StartCoroutine(DelayedDestroy());
+    }
+    private IEnumerator DelayedDestroy()
+    {
+        yield return new WaitForSeconds(10.0f);
+        Destroy(this.gameObject);
     }
 
     private IEnumerator SeekTarget(GameObject target)
     {
         for (int fuel = 5; fuel > 0; fuel--)
         {
-            // Calculate vector to target
-            Vector2 directionToTarget = (target.transform.position - this.transform.position).normalized;
+            if (target == null)
+            {
+                yield break;
+            }
 
-            const float MissileSpeed = 150.0f;
+            lock (target)
+            {
+                // Calculate vector to target
+                Vector2 directionToTarget = (target.transform.position - this.transform.position).normalized;
 
-            // Add force in direction
-            rigidbody2D.AddForce(directionToTarget * MissileSpeed);
+                const float MissileSpeed = 150.0f;
+
+                // Add force in direction
+                rigidbody2D.AddForce(directionToTarget * MissileSpeed);
+            }
 
             yield return new WaitForSeconds(1.0f);
         }
+
+        Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Targetable target = collision.gameObject.GetComponent<Targetable>();
+
+        if (target == null)
+        {
+            return;
+        }
+
+        lock (target)
+        {
+            target.Hit();
+        }
+
+        Destroy(this.gameObject);
     }
 }
