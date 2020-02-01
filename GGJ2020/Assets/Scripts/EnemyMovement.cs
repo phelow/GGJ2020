@@ -7,6 +7,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     Rigidbody2D rigidbody2D;
 
+    [SerializeField]
+    HealthManager enemyHealthManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +40,21 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        NexusPull nexus = collision.gameObject.GetComponent<NexusPull>();
+        if (nexus == null)
+        {
+            return;
+        }
+
+        HealthManager health = collision.gameObject.GetComponent<HealthManager>();
+        if (health == null)
+        {
+            return;
+        }
+
+        health.TakeHit(10.0f);
+        enemyHealthManager.TakeHit(float.MaxValue);
     }
 }

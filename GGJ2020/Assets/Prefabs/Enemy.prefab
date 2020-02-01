@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 6899598916131687799}
+  enemyHealthManager: {fileID: -2819123879974005507}
 --- !u!114 &-933056336796783314
 MonoBehaviour:
   m_ObjectHideFlags: 0
