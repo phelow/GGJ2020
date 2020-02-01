@@ -202,6 +202,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8186113078886415359}
   pullable: {fileID: 6899598916131687798}
+  prefabResource: {fileID: 4577495690222932897, guid: dff3da0c8ce5e074eb626960b96f2493,
+    type: 3}
 --- !u!1001 &8071289523868464647
 PrefabInstance:
   m_ObjectHideFlags: 0
