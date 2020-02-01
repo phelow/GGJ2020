@@ -47,7 +47,7 @@ public class Collector : MonoBehaviour
             .Where
             (
                i => i.GetComponent<Collectable>() != null
-               // TODO: && check is in Line of Sight
+               && isInLineOfSight(i)
             )
             .Select(i => i.GetComponent<Collectable>()).ToArray();
 
@@ -89,5 +89,22 @@ public class Collector : MonoBehaviour
         {
             lastHovering = null;
         }
+    }
+
+    /// <summary>
+    /// Returns true if there is no obstable between the center of this object and the supplied item
+    /// </summary>
+    private bool isInLineOfSight(Collider item)
+    {
+        RaycastHit hitInfo;
+        var dir = item.transform.position - transform.position;
+        // Debug.DrawRay(transform.position, dir);
+        if (Physics.Raycast(transform.position, dir, out hitInfo, 1000))
+        {
+            // make sure the object hit matches the supplied item
+            return item.gameObject == hitInfo.collider.gameObject;
+        }
+
+        return false;
     }
 }
