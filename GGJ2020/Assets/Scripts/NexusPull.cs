@@ -49,7 +49,6 @@ public class NexusPull : MonoBehaviour
         lock (pullableSpaceObjects)
         {
             pullableSpaceObjects.Remove(pullable);
-
         }
     }
 }
