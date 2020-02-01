@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnableObjects:
   - {fileID: 6899598916131687785, guid: 5f215f0dd570c9242b688a61764212bc, type: 3}
+  - {fileID: 3341146406007824668, guid: c3e687f089b8fd24a9239675adaaf767, type: 3}
 --- !u!114 &8087454445810826783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5292286200589405910}
+  pullable: {fileID: 0}
 --- !u!1001 &5253989055861064494
 PrefabInstance:
   m_ObjectHideFlags: 0
