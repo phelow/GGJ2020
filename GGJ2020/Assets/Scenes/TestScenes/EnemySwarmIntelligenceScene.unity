@@ -832,17 +832,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5749506004316409424, guid: f027bbc35c91e884da03fd34705d26c9,
-        type: 3}
-      propertyPath: asteroidAmount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5749506004316409424, guid: f027bbc35c91e884da03fd34705d26c9,
-        type: 3}
-      propertyPath: asteroidObj
-      value: 
-      objectReference: {fileID: 5187027575820774551, guid: 31f474d9ca5f07a44889dfb6b68fcdd5,
-        type: 3}
     - target: {fileID: 5749506004316409425, guid: f027bbc35c91e884da03fd34705d26c9,
         type: 3}
       propertyPath: m_Name

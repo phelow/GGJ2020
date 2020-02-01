@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7874513385688537884}
-  pullable: {fileID: 0}
+  pullable: {fileID: 8775964323209989765}
 --- !u!50 &7830708415639433395
 Rigidbody2D:
   serializedVersion: 4

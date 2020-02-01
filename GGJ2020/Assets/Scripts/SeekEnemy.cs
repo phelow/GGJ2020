@@ -8,11 +8,11 @@ public class SeekEnemy : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rigidbody2D;
 
-    private bool isTargetingPlayer;
+    private bool isTargetingEnemyTeam;
 
-    internal void AssignTarget(GameObject target, bool targetPlayer)
+    internal void AssignTarget(GameObject target, bool targetPlayerTeam)
     {
-        isTargetingPlayer = targetPlayer;
+        isTargetingEnemyTeam = targetPlayerTeam;
         StartCoroutine(SeekTarget(target));
         StartCoroutine(DelayedDestroy());
     }
@@ -50,21 +50,21 @@ public class SeekEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Targetable target = collision.gameObject.GetComponent<Targetable>();
+        Targetable collidedObject = collision.gameObject.GetComponent<Targetable>();
 
-        if (target == null)
+        if (collidedObject == null)
         {
             return;
         }
 
-        if (target.IsPlayersTeam != isTargetingPlayer)
+        if (!((collidedObject.IsPlayersTeam && isTargetingEnemyTeam) || (!collidedObject.IsPlayersTeam && !isTargetingEnemyTeam)))
         {
             return;
         }
 
-        lock (target)
+        lock (collidedObject)
         {
-            target.Hit();
+            collidedObject.Hit();
         }
 
         Destroy(this.gameObject);
