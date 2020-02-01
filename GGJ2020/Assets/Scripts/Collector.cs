@@ -43,7 +43,7 @@ public class Collector : MonoBehaviour
 
     void updateItemClickability()
     {
-        var everythingInCollectionRange = Physics.OverlapSphere(this.transform.position, collectionDistance)
+        var everythingInCollectionRange = Physics2D.OverlapCircleAll(this.transform.position, collectionDistance)
             .Where
             (
                i => i.GetComponent<Collectable>() != null
@@ -94,15 +94,16 @@ public class Collector : MonoBehaviour
     /// <summary>
     /// Returns true if there is no obstable between the center of this object and the supplied item
     /// </summary>
-    private bool isInLineOfSight(Collider item)
+    private bool isInLineOfSight(Collider2D item)
     {
         RaycastHit hitInfo;
         var dir = item.transform.position - transform.position;
         // Debug.DrawRay(transform.position, dir);
-        if (Physics.Raycast(transform.position, dir, out hitInfo, 1000))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 1000);
+        if (hit != null)
         {
             // make sure the object hit matches the supplied item
-            return item.gameObject == hitInfo.collider.gameObject;
+            return item.gameObject == hit.collider.gameObject;
         }
 
         return false;

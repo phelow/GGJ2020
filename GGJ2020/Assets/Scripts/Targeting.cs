@@ -20,6 +20,13 @@ public static class TargetingHelper
                 continue;
             }
 
+            NexusPull nexus = collision.GetComponent<NexusPull>();
+
+            if (nexus != null)
+            {
+                continue;
+            }
+
             if ((target.IsPlayersTeam && !targetPlayerTeam) || (!target.IsPlayersTeam && targetPlayerTeam))
             {
                 continue;

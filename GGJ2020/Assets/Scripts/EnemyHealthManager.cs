@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class EnemyHealthManager : HealthManager
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameObject prefabResource;
+    protected override void OnKilled()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameObject.Instantiate(prefabResource, this.transform.position, new Quaternion(0, 0, 0, 0), null);
     }
 }
