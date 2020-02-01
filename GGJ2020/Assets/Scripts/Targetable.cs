@@ -5,10 +5,20 @@ using UnityEngine;
 public class Targetable : MonoBehaviour
 {
     [SerializeField]
-    private Pullable pullable;
+    private HealthManager health;
+
+    [SerializeField]
+    private bool playersTeam;
     internal void Hit()
     {
-        NexusPull.instance.RemovePullableObject(pullable);
-        Destroy(this.gameObject);
+        health.TakeHit();
+    }
+
+    internal bool IsPlayersTeam
+    {
+        get
+        {
+            return playersTeam;
+        }
     }
 }
