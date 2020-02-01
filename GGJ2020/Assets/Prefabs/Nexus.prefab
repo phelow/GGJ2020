@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c36154f58ef2a41af68614cf87edfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 5743963959357363850}
   playersTeam: 0
 --- !u!114 &5743963959357363850
 MonoBehaviour:
@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139fba3ade45a71469b0f3706318a9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 5292286200589405910}
+  pullable: {fileID: 0}
 --- !u!1001 &5253989055861064494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -292,3 +294,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5253989055861064494}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5292286200589405910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114860996982918648, guid: 14a759585291f914c86607be50c213cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5253989055861064494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdabb6774b00054d818f93e87ba72cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
