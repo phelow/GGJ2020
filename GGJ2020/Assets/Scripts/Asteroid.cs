@@ -10,7 +10,7 @@ public class Asteroid : MonoBehaviour
    float asteroidForce =0.2f;
     Rigidbody2D rb;
     Vector2 v;
-    void Start()
+    void Awake()
     {
         rb =  gameObject.GetComponent<Rigidbody2D>();
        v = rb.velocity;
@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
             return;
         }
 
-        Vector2 direction = this.transform.position - nexus.transform.position;
+        Vector2 direction = (this.transform.position - nexus.transform.position).normalized;
 
         rb.AddForce(direction * 10.0f);
     }
