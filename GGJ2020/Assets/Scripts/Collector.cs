@@ -17,15 +17,19 @@ public class Collector : MonoBehaviour
     [Tooltip("Input.GetButtonUp to use for clicking")]
     public string ClickButton = "Fire1";
 
+    [Header("Debug")]
     public Collectable lastHovering;
     public Collectable[] allItems;
+    public Collectable[] lastCollectable;
 
-    private void Awake()
+    void Start()
     {
         allItems = FindObjectsOfType<Collectable>();
+        foreach (var item in allItems)
+        {
+            item.SetClickability(Collectable.ClickabilityEnum.OutOfRange);
+        }
     }
-
-    // void Start() { }
 
     void Update()
     {
@@ -33,35 +37,36 @@ public class Collector : MonoBehaviour
 
         if (lastHovering != null && Input.GetButtonUp(ClickButton))
         {
-            lastHovering.ClickItGood();
+            lastHovering.ClickIt();
         }
     }
 
     void updateItemClickability()
     {
-        float distanceToPlayer;
-        List<Collectable> inCollectorRange = new List<Collectable>();
+        var everythingInCollectionRange = Physics.OverlapSphere(this.transform.position, collectionDistance)
+            .Where
+            (
+               i => i.GetComponent<Collectable>() != null
+               // TODO: && check is in Line of Sight
+            )
+            .Select(i => i.GetComponent<Collectable>()).ToArray();
 
-        foreach (var collectable in allItems)
+        // de-activate items
+        var itemsNewlyOutOfRange = lastCollectable.Where(last => everythingInCollectionRange.All(now => last != now));
+        foreach (var item in itemsNewlyOutOfRange)
         {
-            distanceToPlayer =
-                Vector3.Distance(this.transform.position, collectable.transform.position);
-
-            // highlight objects collecatable by player
-            if (distanceToPlayer < collectionDistance
-                // TODO: && check is in Line of Sight
-                )
-            {
-                collectable.SetClickability(Collectable.ClickabilityEnum.Clickable);
-                inCollectorRange.Add(collectable);
-            }
-            else
-            {
-                collectable.SetClickability(Collectable.ClickabilityEnum.OutOfRange);
-            }
+            item.SetClickability(Collectable.ClickabilityEnum.OutOfRange);
         }
 
-        if (inCollectorRange == null || inCollectorRange.Count <= 0)
+        // active new items
+        foreach (var collided in everythingInCollectionRange)
+        {
+            collided.SetClickability(Collectable.ClickabilityEnum.Clickable);
+        }
+        lastCollectable = everythingInCollectionRange;
+
+        // handle nothing in collection range
+        if (everythingInCollectionRange == null || everythingInCollectionRange.Count() <= 0)
             return;
 
         // determine players mouse cursor position in world
@@ -69,12 +74,12 @@ public class Collector : MonoBehaviour
         mouseInWorld.z = distanceOfCameraFromGround;
         mouseInWorld = Camera.main.ScreenToWorldPoint(mouseInWorld);
 
-        // highlight closest object being hovered over by the mouse
-        var closestToMouse = inCollectorRange
+        // item in everythingInCollectionRange that is closest to the mouse cursor
+        var closestToMouse = everythingInCollectionRange
             .OrderBy(c => Vector3.Distance(c.transform.position, mouseInWorld))
             .First();
 
-        //Debug.Log(closestToMouse.name + " dist = " + Vector3.Distance(closestToMouse.transform.position, mouseInWorld));
+        // highlight closest collectable to the mouse if it's within hover range
         if (Vector3.Distance(closestToMouse.transform.position, mouseInWorld) < mouseDistance)
         {
             lastHovering = closestToMouse;

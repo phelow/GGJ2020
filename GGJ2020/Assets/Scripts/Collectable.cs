@@ -40,14 +40,15 @@ public class Collectable : MonoBehaviour
     public UnityEvent OnClicked;
     public Outline outline;
 
-    void Start()
+    void Awake()
     {
         outline = this.GetComponent<Outline>();
     }
 
     //void Update() { }
 
-    public void ClickItGood()
+    /// <summary> Sets the state of the clickable to clicked </summary>
+    public void ClickIt()
     {
         SetClickability(ClickabilityEnum.Clicked);
         secondsOfClickLeft = secondsToShowClicked;
