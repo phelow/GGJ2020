@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6001766258693250552}
   - component: {fileID: 3360068275035985744}
   - component: {fileID: 8087454445810826783}
-  - component: {fileID: -2675456467009319318}
+  - component: {fileID: 5743963959357363850}
   m_Layer: 0
   m_Name: Nexus
   m_TagString: Untagged
@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c36154f58ef2a41af68614cf87edfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: -2675456467009319318}
+  health: {fileID: 0}
   playersTeam: 0
---- !u!114 &-2675456467009319318
+--- !u!114 &5743963959357363850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,11 +150,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6001766258693250439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e4cf062d8d10e499276f42144ed3a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 139fba3ade45a71469b0f3706318a9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 5292286200589405910}
-  pullable: {fileID: 0}
 --- !u!1001 &5253989055861064494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -294,15 +292,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5253989055861064494}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5292286200589405910 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114860996982918648, guid: 14a759585291f914c86607be50c213cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 5253989055861064494}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cdabb6774b00054d818f93e87ba72cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
