@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
@@ -7,13 +8,13 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField]
     private Pullable pullable;
-    private const float MaxHealth = 100.0f;
-    private float health = MaxHealth;
+    protected const float MaxHealth = 100.0f;
+    protected float health = MaxHealth;
 
     internal virtual void TakeHit()
     {
         health -= 10.0f;
-        healthBar.SetValue(health/MaxHealth);
+        healthBar.SetValue(GetHealthRatio());
 
         if (health <= 0)
         {
@@ -27,5 +28,10 @@ public class HealthManager : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+    }
+
+    internal float GetHealthRatio()
+    {
+        return health / MaxHealth;
     }
 }

@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class TowerHealthManager : HealthManager
 {
+    private void Start()
+    {
+        health = Random.Range(10.0f, MaxHealth);
+    }
 }
