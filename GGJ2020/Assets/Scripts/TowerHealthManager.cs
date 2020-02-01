@@ -7,8 +7,8 @@ public class TowerHealthManager : HealthManager
     private bool isInvulnerable = false;
     private void Start()
     {
-        StartCoroutine(Invulnerability());
         TakeHit(Random.Range(10.0f, MaxHealth - 1.0f));
+        StartCoroutine(Invulnerability());
     }
 
     private IEnumerator Invulnerability()
