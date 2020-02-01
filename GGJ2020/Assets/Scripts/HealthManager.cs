@@ -11,14 +11,14 @@ public class HealthManager : MonoBehaviour
     protected const float MaxHealth = 100.0f;
     protected float health = MaxHealth;
 
-    internal virtual void TakeHit()
+    internal virtual void TakeHit(float damageToTake = 10.0f)
     {
         if (IsInvulnerable())
         {
             return;
         }
-
-        health -= 10.0f;
+        
+        health -= damageToTake;
         healthBar.SetValue(GetHealthRatio());
 
         if (health <= 0)

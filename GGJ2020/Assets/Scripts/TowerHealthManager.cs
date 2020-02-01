@@ -8,7 +8,7 @@ public class TowerHealthManager : HealthManager
     private void Start()
     {
         StartCoroutine(Invulnerability());
-        health = Random.Range(10.0f, MaxHealth);
+        TakeHit(Random.Range(10.0f, MaxHealth - 1.0f));
     }
 
     private IEnumerator Invulnerability()
