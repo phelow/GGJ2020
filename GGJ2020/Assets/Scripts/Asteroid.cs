@@ -23,4 +23,17 @@ public class Asteroid : MonoBehaviour
     {
         rb.velocity = v;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        NexusPull nexus = collision.gameObject.GetComponent<NexusPull>();
+        if (nexus == null)
+        {
+            return;
+        }
+
+        Vector2 direction = this.transform.position - nexus.transform.position;
+
+        rb.AddForce(direction * 10.0f);
+    }
 }
