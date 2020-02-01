@@ -16,7 +16,7 @@ public class AsteroidBeltSpawner : MonoBehaviour
         GameObject curAsteroid;
         for (int i = 0; i <= asteroidAmount; i++)
         {
-            Vector3 ringVector = new Vector3(Random.Range(-radius, radius), 0, Random.Range(-radius, radius));
+            Vector3 ringVector = new Vector2(Random.Range(-radius, radius), Random.Range(-radius, radius));
             ringVector.Normalize();
 
             //multiply it with a random value to point to a specific location
