@@ -24,11 +24,13 @@ public class AsteroidBeltSpawner : MonoBehaviour
             // 1st parameter makes it so that asteroids dont spawn in middle.
             ringVector *= (Random.Range(10.0f, radius));
             curAsteroid = GameObject.Instantiate(asteroidObj, CenterPos + ringVector, Quaternion.identity,this.transform);
-            curAsteroid.transform.localScale = new Vector3(Random.Range(5f, 10.0f), Random.Range(5f, 10.0f), Random.Range(5f, 10.0f));
+            curAsteroid.transform.localScale = new Vector3(Random.Range(5f, 10.0f), Random.Range(5f, 10.0f), Random.Range(5f, 10.0f)).normalized * Random.Range(.1f, 20.0f);
 
             if (lastAsteroid != null)
             {
                 lastAsteroid.GetComponent<SpringJoint2D>().connectedBody = curAsteroid.GetComponent<Rigidbody2D>();
+                lastAsteroid.GetComponent<SpringJoint2D>().autoConfigureDistance = false;
+                lastAsteroid.GetComponent<SpringJoint2D>().distance += lastAsteroid.transform.localScale.magnitude +  curAsteroid.transform.localScale.magnitude + 10.0f;
             }
 
             lastAsteroid = curAsteroid;
