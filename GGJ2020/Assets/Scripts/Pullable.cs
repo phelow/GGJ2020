@@ -26,7 +26,7 @@ public class Pullable : MonoBehaviour
     internal void PullTowardsNexus(Vector3 nexusPosition)
     {
         // Calculate distance to nexus
-        float distance = Vector3.Distance(this.transform.position, nexusPosition);
+        float distance = Vector2.Distance(this.transform.position, nexusPosition);
 
         const float MaxForce = 10;
         const float MinForce = 1;
@@ -39,10 +39,10 @@ public class Pullable : MonoBehaviour
         float force = Mathf.Lerp(MaxForce, MinForce, Mathf.InverseLerp(MinDistance, MaxDistance, Mathf.Pow(distance, DistanceExponent)));
 
         // Calculate direction to pull object in
-        Vector3 direction = (nexusPosition - this.transform.position).normalized;
+        Vector2 direction = (nexusPosition - this.transform.position).normalized;
 
         // Multiply force by direction
-        Vector3 multipliedDirection = direction * force;
+        Vector2 multipliedDirection = direction * force;
 
         // Add force to gameobject
         rigidbody2D.AddForce(multipliedDirection);
