@@ -14,6 +14,7 @@ public class AsteroidBeltSpawner : MonoBehaviour
     {
         CenterPos = transform.position;
         GameObject curAsteroid;
+        GameObject lastAsteroid = null;
         for (int i = 0; i <= asteroidAmount; i++)
         {
             Vector3 ringVector = new Vector2(Random.Range(-radius, radius), Random.Range(-radius, radius));
@@ -24,6 +25,13 @@ public class AsteroidBeltSpawner : MonoBehaviour
             ringVector *= (Random.Range(10.0f, radius));
             curAsteroid = GameObject.Instantiate(asteroidObj, CenterPos + ringVector, Quaternion.identity,this.transform);
             curAsteroid.transform.localScale = new Vector3(Random.Range(5f, 10.0f), Random.Range(5f, 10.0f), Random.Range(5f, 10.0f));
+
+            if (lastAsteroid != null)
+            {
+                lastAsteroid.GetComponent<SpringJoint2D>().connectedBody = curAsteroid.GetComponent<Rigidbody2D>();
+            }
+
+            lastAsteroid = curAsteroid;
         }
     }
 }

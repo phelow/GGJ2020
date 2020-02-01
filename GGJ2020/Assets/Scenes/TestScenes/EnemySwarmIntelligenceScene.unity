@@ -835,7 +835,7 @@ PrefabInstance:
     - target: {fileID: 5749506004316409424, guid: f027bbc35c91e884da03fd34705d26c9,
         type: 3}
       propertyPath: asteroidAmount
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5749506004316409424, guid: f027bbc35c91e884da03fd34705d26c9,
         type: 3}
