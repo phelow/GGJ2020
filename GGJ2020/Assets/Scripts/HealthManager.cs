@@ -13,6 +13,11 @@ public class HealthManager : MonoBehaviour
 
     internal virtual void TakeHit()
     {
+        if (IsInvulnerable())
+        {
+            return;
+        }
+
         health -= 10.0f;
         healthBar.SetValue(GetHealthRatio());
 
@@ -28,6 +33,11 @@ public class HealthManager : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+    }
+
+    protected virtual bool IsInvulnerable()
+    {
+        return false;
     }
 
     internal float GetHealthRatio()
