@@ -26,6 +26,16 @@ public class Asteroid : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        BounceAsteroid(collision);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        BounceAsteroid(collision);
+    }
+
+    private void BounceAsteroid(Collision2D collision)
+    {
         NexusPull nexus = collision.gameObject.GetComponent<NexusPull>();
         if (nexus == null)
         {
