@@ -28,13 +28,13 @@ public class Pullable : MonoBehaviour
         // Calculate distance to nexus
         float distance = Vector2.Distance(this.transform.position, nexusPosition);
 
-        const float MaxForce = 10;
-        const float MinForce = 1;
+        const float MaxForce = 5.0f;
+        const float MinForce = .1f;
 
-        const float MaxDistance = 100.0f;
+        const float MaxDistance = 20.0f;
         const float MinDistance = 1.0f;
 
-        const float DistanceExponent = 3.0f;
+        const float DistanceExponent = 5.0f;
         // Calculate force to inflict
         float force = Mathf.Lerp(MaxForce, MinForce, Mathf.InverseLerp(MinDistance, MaxDistance, Mathf.Pow(distance, DistanceExponent)));
 
