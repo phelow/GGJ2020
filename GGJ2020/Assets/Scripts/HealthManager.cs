@@ -31,8 +31,13 @@ public class HealthManager : MonoBehaviour
                 }
             }
 
+            OnKilled();
             Destroy(this.gameObject);
         }
+    }
+
+    protected virtual void OnKilled()
+    {
     }
 
     protected virtual bool IsInvulnerable()
