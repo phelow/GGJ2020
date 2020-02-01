@@ -107,9 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clickability: 0
+  secondsToShowClicked: 0.2
   OnClicked:
     m_PersistentCalls:
       m_Calls: []
+  outline: {fileID: 0}
 --- !u!114 &4278354778948800329
 MonoBehaviour:
   m_ObjectHideFlags: 0

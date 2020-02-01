@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// White item is clicked
-/// Green item that is currently hovered over
-/// Yellow items clickable
-/// Red item is not clickable
-/// </summary>
+/// <summary> Can be collected by a collector </summary>
 [RequireComponent(typeof(Outline))]
 public class Collectable : MonoBehaviour
 {
@@ -25,16 +20,16 @@ public class Collectable : MonoBehaviour
     public readonly Dictionary<ClickabilityEnum, Color> StatusColors = new Dictionary<ClickabilityEnum, Color>()
     {
         { ClickabilityEnum.Error, Color.magenta }
-        , { ClickabilityEnum.OutOfRange, Color.red }
-        , { ClickabilityEnum.Clickable, Color.yellow }
-        , { ClickabilityEnum.Hovering, Color.green }
-        , { ClickabilityEnum.Clicked, Color.white }
+        , { ClickabilityEnum.OutOfRange, Color.blue } // item is out of range to be collected
+        , { ClickabilityEnum.Clickable, Color.yellow } // items clickable
+        , { ClickabilityEnum.Hovering, Color.green } // item that is currently hovered over
+        , { ClickabilityEnum.Clicked, Color.white } // item is clicked / activated
     };
 
     public ClickabilityEnum Clickability;
 
     [Tooltip("How long a click is visiable")]
-    public float secondsToShowClicked = .5f;
+    public float secondsToShowClicked = .2f;
     private float secondsOfClickLeft = 0f;
 
     public UnityEvent OnClicked;
@@ -52,7 +47,7 @@ public class Collectable : MonoBehaviour
     {
         SetClickability(ClickabilityEnum.Clicked);
         secondsOfClickLeft = secondsToShowClicked;
-        Debug.Log(this.name + " was clicked " + secondsOfClickLeft);
+
         if (OnClicked != null)
         {
             OnClicked.Invoke();
