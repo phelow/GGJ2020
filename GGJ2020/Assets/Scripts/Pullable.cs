@@ -23,11 +23,8 @@ public class Pullable : MonoBehaviour
 
     }
 
-    internal void PullTowardsNexus(Vector3 nexusPosition)
+    protected virtual float GetPullForce(float distance)
     {
-        // Calculate distance to nexus
-        float distance = Vector2.Distance(this.transform.position, nexusPosition);
-
         const float MaxForce = 5.0f;
         const float MinForce = .1f;
 
@@ -35,8 +32,16 @@ public class Pullable : MonoBehaviour
         const float MinDistance = 1.0f;
 
         const float DistanceExponent = 5.0f;
+        return Mathf.Lerp(MaxForce, MinForce, Mathf.InverseLerp(MinDistance, MaxDistance, Mathf.Pow(distance, DistanceExponent)));
+    }
+
+    internal void PullTowardsNexus(Vector3 nexusPosition)
+    {
+        // Calculate distance to nexus
+        float distance = Vector2.Distance(this.transform.position, nexusPosition);
+
         // Calculate force to inflict
-        float force = Mathf.Lerp(MaxForce, MinForce, Mathf.InverseLerp(MinDistance, MaxDistance, Mathf.Pow(distance, DistanceExponent)));
+        float force = GetPullForce(distance);
 
         // Calculate direction to pull object in
         Vector2 direction = (nexusPosition - this.transform.position).normalized;
