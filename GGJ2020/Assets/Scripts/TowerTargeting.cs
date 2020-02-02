@@ -40,7 +40,7 @@ public class TowerTargeting : MonoBehaviour
     {
         while (true)
         {
-            const float MaxTargetingDistance = 15.0f;
+            const float MaxTargetingDistance = 35.0f;
 
             TargetingHelper.ShootNearestTarget(pMissile, this.transform.position, MaxTargetingDistance, false);
 

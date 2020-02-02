@@ -1,36 +1,61 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     internal static Player instance;
 
+    [SerializeField]
+    private ProgressBarPro juiceBar;
+
     #region  Private Members
-    private Rigidbody mRigidBody;
+    private Rigidbody2D mRigidBody;
     private string mTag = "Player";
-    public double mCurrentJuice;
+    public float mCurrentJuice;
     private bool mMoving;
     #endregion
 
     #region  Public Members
+    public Jetpack jetpack;
     public float thrust = 25;
     [Range(1, 100)]
     public float turn;
     [Range(0, 5)]
     public float friction = 2;
+
     [Range(1, 1000)]
     public float juice = 500; //the amount of booster juice the player has on a fully charged jetpack
     [Range(1, 500)]
     public float drainRate = 100; //How fast the jetpact uses juices when moving
     [Range(1, 500)]
     public float chargeRate = 200; //How fast the jetpack refuels when idle
-
-    [Tooltip("normal of the 2d plane that the game will be played on can only be 1 of the 3 axises due to rigidbody limitations")]
-    public RigidbodyConstraints normalOf2dPlane = RigidbodyConstraints.FreezePositionZ;
-
-    public Jetpack jetpack;
     #endregion
+
+    private double GetJuice()
+    {
+        return mCurrentJuice;
+    }
+
+    internal bool TrySendClick()
+    {
+        mMoving = true;
+        return true;
+    }
+
+    public void AddJuice(float addedJuice)
+    {
+        mCurrentJuice += addedJuice;
+        mCurrentJuice = Mathf.Min(mCurrentJuice, juice);
+        juiceBar.SetValue(mCurrentJuice / juice);
+    }
+
+    public void SubtractJuice(float subtractedJuice)
+    {
+        mCurrentJuice -= subtractedJuice;
+        mCurrentJuice = Mathf.Min(subtractedJuice, juice);
+        juiceBar.SetValue(mCurrentJuice / juice);
+    }
 
     private void Awake()
     {
@@ -51,12 +76,33 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate()
+        mRigidBody = GetComponent<Rigidbody2D>();
+        AddJuice(juice);
+    }
+
+    void Update()
+    {
+        mRigidBody.drag = friction;
+
+        faceDirection();
+    }
+
+    private void LateUpdate()
     {
         //PHYSICS LOGIC
-        if (mMoving)
+        if (mMoving && mCurrentJuice > drainRate * 1.0f)
+        {
             move();
-        else
-            mRigidBody.angularVelocity = Vector3.zero;
+            mMoving = false;
+            return;
+        }
+
+
+        mRigidBody.angularVelocity = 0;
+
+        AddJuice(chargeRate * Time.deltaTime);
+
+        mMoving = false;
     }
 
     #region Primary Mechanics
@@ -66,8 +112,8 @@ public class Player : MonoBehaviour
         if (mCurrentJuice > 0)
         {
             //drain jet pack
-            mCurrentJuice -= drainRate * Time.deltaTime;
-            mRigidBody.AddForce(transform.forward * thrust, ForceMode.Force);
+            SubtractJuice(drainRate * Time.deltaTime);
+            mRigidBody.AddForce(transform.up * -1.0f * thrust);
         }
     }
 
@@ -82,23 +128,8 @@ public class Player : MonoBehaviour
 
         // determine what plane is in the 3d space
         Vector3 planeNormal;
-        switch (normalOf2dPlane)
-        {
-            case RigidbodyConstraints.FreezePositionX:
-                mouseInWorld.z = Camera.main.transform.position.x;
-                planeNormal = Vector3.right;
-                break;
-            case RigidbodyConstraints.FreezePositionY:
-                mouseInWorld.z = Camera.main.transform.position.y;
-                planeNormal = Vector3.up;
-                break;
-            case RigidbodyConstraints.FreezePositionZ:
-                mouseInWorld.z = Camera.main.transform.position.z;
-                planeNormal = Vector3.forward;
-                break;
-            default:
-                throw new System.NotImplementedException("Not sure what to do with that restraint, do a position one instead");
-        }
+        mouseInWorld.z = Camera.main.transform.position.z;
+        planeNormal = Vector3.forward;
         mouseInWorld = Camera.main.ScreenToWorldPoint(mouseInWorld);
 
         // use that plane for 2d

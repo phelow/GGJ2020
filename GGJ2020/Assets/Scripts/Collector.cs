@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Collector : MonoBehaviour
 {
@@ -31,14 +32,19 @@ public class Collector : MonoBehaviour
         }
     }
 
+    internal bool TrySendClick()
+    {
+        if (lastHovering != null)
+        {
+            lastHovering.ClickIt();
+            return true;
+        }
+
+        return false;
+    }
     void Update()
     {
         updateItemClickability();
-
-        if (lastHovering != null && Input.GetButtonUp(ClickButton))
-        {
-            lastHovering.ClickIt();
-        }
     }
 
     void updateItemClickability()
@@ -99,11 +105,11 @@ public class Collector : MonoBehaviour
         RaycastHit hitInfo;
         var dir = item.transform.position - transform.position;
         // Debug.DrawRay(transform.position, dir);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 1000);
-        if (hit != null)
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, dir, 1000);
+        if (hit.Length >= 2)
         {
             // make sure the object hit matches the supplied item
-            return item.gameObject == hit.collider.gameObject;
+            return item.gameObject == hit[1].collider.gameObject;
         }
 
         return false;
