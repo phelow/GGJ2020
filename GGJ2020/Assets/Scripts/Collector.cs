@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Collector : MonoBehaviour
 {
@@ -31,19 +32,19 @@ public class Collector : MonoBehaviour
         }
     }
 
-    void Update()
+    internal bool TrySendClick()
     {
-        updateItemClickability();
-
-        if (!Input.GetMouseButtonDown(0))
-        {
-            return;
-        }
-
         if (lastHovering != null)
         {
             lastHovering.ClickIt();
+            return true;
         }
+
+        return false;
+    }
+    void Update()
+    {
+        updateItemClickability();
     }
 
     void updateItemClickability()

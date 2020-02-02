@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     public float turn;
     [Range(0, 5)]
     public float friction = 2;
+
     [Range(1, 1000)]
     public float juice = 500; //the amount of booster juice the player has on a fully charged jetpack
     [Range(1, 500)]
@@ -32,6 +34,12 @@ public class Player : MonoBehaviour
     private double GetJuice()
     {
         return mCurrentJuice;
+    }
+
+    internal bool TrySendClick()
+    {
+        mMoving = true;
+        return true;
     }
 
     public void AddJuice(float addedJuice)
@@ -64,27 +72,27 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        mMoving = Input.GetMouseButtonDown(0);
         mRigidBody.drag = friction;
 
         faceDirection();
-
-        //IDLE LOGIC
-        //Recharge jet pack
-        if (!mMoving)
-        {
-            AddJuice(chargeRate * Time.deltaTime);
-        }
     }
 
-    //Good for updats involving physics
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         //PHYSICS LOGIC
         if (mMoving)
+        {
             move();
-        else
-            mRigidBody.angularVelocity = 0;
+            mMoving = false;
+            return;
+        }
+
+
+        mRigidBody.angularVelocity = 0;
+
+        AddJuice(chargeRate * Time.deltaTime);
+
+        mMoving = false;
     }
 
     #region Primary Mechanics

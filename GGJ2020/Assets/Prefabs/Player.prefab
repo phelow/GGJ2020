@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7721786854486165987}
   - component: {fileID: 3451232875788539817}
   - component: {fileID: 2807084069117510891}
+  - component: {fileID: 8504198294561802249}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e5006b3524b87064e8dc28fad374aa1c, type: 2}
+  - {fileID: 2100000, guid: 12e4edf516393c94c94abae2d5faf550, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,9 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juiceBar: {fileID: 0}
   mCurrentJuice: 0
-  thrust: 100
-  turn: 100
-  friction: 0.1
+  thrust: 1000
+  turn: 0
+  friction: 2
   juice: 500
   drainRate: 100
   chargeRate: 200
@@ -158,3 +159,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8504198294561802249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430128988572067264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd21a55434a78b42838d0f1a3df20fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collector: {fileID: 7721786854486165987}
+  player: {fileID: 3430128988572067271}
