@@ -1011,6 +1011,11 @@ PrefabInstance:
       propertyPath: playersTeam
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4899042808498304244, guid: 93428b5bbd995ba48aa4559e42c6b756,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93428b5bbd995ba48aa4559e42c6b756, type: 3}
 --- !u!1 &1009044675
@@ -2085,6 +2090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115362153589150684, guid: dff3da0c8ce5e074eb626960b96f2493,
+        type: 3}
+      propertyPath: ShouldDestroy
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4577495690222932897, guid: dff3da0c8ce5e074eb626960b96f2493,
         type: 3}
