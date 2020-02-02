@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
     private void LateUpdate()
     {
         //PHYSICS LOGIC
-        if (mMoving)
+        if (mMoving && mCurrentJuice > drainRate * 1.0f)
         {
             move();
             mMoving = false;
