@@ -23,14 +23,14 @@ GameObject:
   - component: {fileID: 5322901359577015225}
   - component: {fileID: 8619605799853281696}
   - component: {fileID: 5814394127760753891}
-  - component: {fileID: 4160480023960982479}
   - component: {fileID: 3796502436518921139}
   - component: {fileID: -2413127078805176192}
   - component: {fileID: 6706361682695259550}
   - component: {fileID: 7830708415639433395}
   - component: {fileID: 8775964323209989765}
   - component: {fileID: 22195801838459944}
-  - component: {fileID: 4834314294068687920}
+  - component: {fileID: 8190405862076505559}
+  - component: {fileID: 6350495400369215538}
   m_Layer: 12
   m_Name: Long RangeTower
   m_TagString: Untagged
@@ -47,7 +47,7 @@ Transform:
   m_GameObject: {fileID: 3341146406007824668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.78, y: -0.24, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 8053381148201915506}
   - {fileID: 3647037024729697803}
@@ -100,32 +100,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!61 &4160480023960982479
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3341146406007824668}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &3796502436518921139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +116,7 @@ MonoBehaviour:
     type: 3}
   healthManager: {fileID: 6706361682695259550}
   rigidbody2D: {fileID: 7830708415639433395}
-  MaxTargetingDistance: 35
+  MaxTargetingDistance: 50
   reloadTime: 1
   missileKnockBackModifier: 1
 --- !u!114 &-2413127078805176192
@@ -227,7 +201,23 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &4834314294068687920
+--- !u!58 &8190405862076505559
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341146406007824668}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!114 &6350495400369215538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,7 +226,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3341146406007824668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac932538bde4ae40b3df9b6b764872f, type: 3}
+  m_Script: {fileID: 11500000, guid: f69ebe1bc92d26a499ffd0ac83325461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Clickability: 0
@@ -256,6 +246,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   outline: {fileID: 0}
+  healthManager: {fileID: 6706361682695259550}
 --- !u!1001 &7845258747616220900
 PrefabInstance:
   m_ObjectHideFlags: 0
