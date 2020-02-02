@@ -35,6 +35,7 @@ public class TowerHealthManager : HealthManager
             return;
         }
 
+        Hammer.instance.SetTerminus(this.transform.position);
         ResourceTracker.instance.UseCharge();
         health = MaxHealth;
         healthBar.SetValue(GetHealthRatio());

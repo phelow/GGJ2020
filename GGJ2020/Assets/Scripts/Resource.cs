@@ -18,6 +18,7 @@ public class Resource : MonoBehaviour
     public void PickupResource()
     {
         ResourceTracker.instance.AddResource();
+        Sickle.sickle.SetTerminus(this.transform.position);
         Destroy(this.gameObject);
     }
 }
