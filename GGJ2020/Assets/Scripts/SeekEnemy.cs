@@ -40,6 +40,7 @@ public class SeekEnemy : MonoBehaviour
 
                 const float MissileSpeed = 150.0f;
 
+                transform.LookAt(target.transform.position);
                 // Add force in direction
                 rigidbody2D.AddForce(directionToTarget * MissileSpeed);
             }
