@@ -40,7 +40,7 @@ public class CameraShake : MonoBehaviour {
         StartCoroutine(shake(DURATION, MAGNITUDE * factor));
     }
 
-    public bool Shaking
+    public bool isShaking
     {
         get
         {
