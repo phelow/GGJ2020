@@ -47,6 +47,6 @@ public class Pullable : MonoBehaviour
         Vector2 multipliedDirection = direction * force;
 
         // Add force to gameobject
-        rigidbody2D.AddForce(multipliedDirection);
+        rigidbody2D.AddForce(multipliedDirection * rigidbody2D.mass);
     }
 }
