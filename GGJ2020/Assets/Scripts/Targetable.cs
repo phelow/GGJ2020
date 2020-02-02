@@ -9,9 +9,9 @@ public class Targetable : MonoBehaviour
 
     [SerializeField]
     private bool playersTeam;
-    internal void Hit()
+    internal void Hit(Vector2 movementVector)
     {
-        health.TakeHit();
+        health.TakeHit(movementVector);
     }
 
     internal bool IsPlayersTeam

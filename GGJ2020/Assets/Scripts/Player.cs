@@ -11,6 +11,17 @@ public class Player : MonoBehaviour
 
     #region  Private Members
     private Rigidbody2D mRigidBody;
+
+    internal void DrainAllJuice()
+    {
+        SubtractJuice(juice);
+    }
+
+    internal void MoveInDirection(Vector2 movementVector)
+    {
+        mRigidBody.AddForce(movementVector * 10.0f);
+    }
+
     private string mTag = "Player";
     public float mCurrentJuice;
     private bool mMoving;
@@ -42,6 +53,11 @@ public class Player : MonoBehaviour
         return true;
     }
 
+    internal void CancelClick()
+    {
+        mMoving = false;
+    }
+
     public void AddJuice(float addedJuice)
     {
         mCurrentJuice += addedJuice;
@@ -52,7 +68,7 @@ public class Player : MonoBehaviour
     public void SubtractJuice(float subtractedJuice)
     {
         mCurrentJuice -= subtractedJuice;
-        mCurrentJuice = Mathf.Min(subtractedJuice, juice);
+        mCurrentJuice = Mathf.Max(mCurrentJuice, 0);
         juiceBar.SetValue(mCurrentJuice / juice);
     }
 
@@ -80,10 +96,9 @@ public class Player : MonoBehaviour
     private void LateUpdate()
     {
         //PHYSICS LOGIC
-        if (mMoving && mCurrentJuice > drainRate * 1.0f)
+        if (mMoving && mCurrentJuice > 0.0f)
         {
             move();
-            mMoving = false;
             return;
         }
 
@@ -91,8 +106,6 @@ public class Player : MonoBehaviour
         mRigidBody.angularVelocity = 0;
 
         AddJuice(chargeRate * Time.deltaTime);
-
-        mMoving = false;
     }
 
     #region Primary Mechanics
@@ -103,7 +116,7 @@ public class Player : MonoBehaviour
         {
             //drain jet pack
             SubtractJuice(drainRate * Time.deltaTime);
-            mRigidBody.AddForce(transform.up * -1.0f * thrust);
+            mRigidBody.AddForce(transform.up * -1.0f * thrust * mCurrentJuice/juice);
         }
     }
 

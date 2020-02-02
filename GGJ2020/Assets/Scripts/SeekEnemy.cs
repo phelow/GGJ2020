@@ -62,9 +62,11 @@ public class SeekEnemy : MonoBehaviour
             return;
         }
 
+        Vector2 movementVector = (collision.transform.position - this.transform.position).normalized;
+
         lock (collidedObject)
         {
-            collidedObject.Hit();
+            collidedObject.Hit(movementVector);
         }
 
         Destroy(this.gameObject);

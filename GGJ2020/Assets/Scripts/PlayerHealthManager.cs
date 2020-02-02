@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PlayerHealthManager : HealthManager
 {
-    internal override void TakeHit(float damageToTake = 10.0f)
+    [SerializeField]
+    private Player player;
+
+    internal override void TakeHit(Vector2 movementVector, float damageToTake = 10.0f)
     {
-        transform.position = new Vector3(0, 0, 0);
+        player.DrainAllJuice();
+        player.MoveInDirection(movementVector);
     }
 }

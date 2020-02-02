@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juiceBar: {fileID: 0}
   mCurrentJuice: 0
-  thrust: 1000
+  thrust: 30
   turn: 0
   friction: 2
   juice: 500
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 7864735880483880186}
-  playersTeam: 0
+  playersTeam: 1
 --- !u!114 &7864735880483880186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +203,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   pullable: {fileID: 0}
+  player: {fileID: 3430128988572067271}
