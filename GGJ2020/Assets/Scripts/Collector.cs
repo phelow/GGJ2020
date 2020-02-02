@@ -7,7 +7,7 @@ using System;
 public class Collector : MonoBehaviour
 {
     [Tooltip("How close the mouse has to be to the collectable for it to be clickable")]
-    public float mouseDistance = .5f;
+    public float mouseDistance = 3.5f;
 
     [Tooltip("How close this collector has to be to the collectable for it to be clickable")]
     public float collectionDistance = 2f;
@@ -119,18 +119,21 @@ public class Collector : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private LayerMask ignorePlayer;
+
     /// <summary>
     /// Returns true if there is no obstable between the center of this object and the supplied item
     /// </summary>
     private bool isInLineOfSight(Collider2D item)
     {
         var dir = item.transform.position - transform.position;
-        // Debug.DrawRay(transform.position, dir);
-        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, dir, 1000);
-        if (hit.Length >= 2)
+         Debug.DrawRay(transform.position, dir);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 1000, ignorePlayer);
+        if (hit.collider != null)
         {
             // make sure the object hit matches the supplied item
-            return item.gameObject == hit[1].collider.gameObject;
+            return item.gameObject == hit.collider.gameObject;
         }
 
         return false;
