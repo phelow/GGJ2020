@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     internal static Player instance;
@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private ProgressBarPro juiceBar;
 
     #region  Private Members
-    private Rigidbody mRigidBody;
+    private Rigidbody2D mRigidBody;
     private string mTag = "Player";
     public float mCurrentJuice;
     private bool mMoving;
@@ -27,9 +27,6 @@ public class Player : MonoBehaviour
     public float drainRate = 100; //How fast the jetpact uses juices when moving
     [Range(1, 500)]
     public float chargeRate = 200; //How fast the jetpack refuels when idle
-
-    [Tooltip("normal of the 2d plane that the game will be played on can only be 1 of the 3 axises due to rigidbody limitations")]
-    public RigidbodyConstraints normalOf2dPlane = RigidbodyConstraints.FreezePositionZ;
     #endregion
 
     private double GetJuice()
@@ -61,8 +58,7 @@ public class Player : MonoBehaviour
         gameObject.tag = mTag;
 
         //Set attributes
-        mRigidBody = GetComponent<Rigidbody>();
-        mRigidBody.constraints = normalOf2dPlane;
+        mRigidBody = GetComponent<Rigidbody2D>();
         AddJuice(juice);
     }
 
@@ -88,7 +84,7 @@ public class Player : MonoBehaviour
         if (mMoving)
             move();
         else
-            mRigidBody.angularVelocity = Vector3.zero;
+            mRigidBody.angularVelocity = 0;
     }
 
     #region Primary Mechanics
@@ -99,7 +95,7 @@ public class Player : MonoBehaviour
         {
             //drain jet pack
             SubtractJuice(drainRate * Time.deltaTime);
-            mRigidBody.AddForce(transform.forward * thrust, ForceMode.Force);
+            mRigidBody.AddForce(transform.up * -1.0f * thrust);
         }
     }
 
@@ -114,23 +110,8 @@ public class Player : MonoBehaviour
 
         // determine what plane is in the 3d space
         Vector3 planeNormal;
-        switch (normalOf2dPlane)
-        {
-            case RigidbodyConstraints.FreezePositionX:
-                mouseInWorld.z = Camera.main.transform.position.x;
-                planeNormal = Vector3.right;
-                break;
-            case RigidbodyConstraints.FreezePositionY:
-                mouseInWorld.z = Camera.main.transform.position.y;
-                planeNormal = Vector3.up;
-                break;
-            case RigidbodyConstraints.FreezePositionZ:
-                mouseInWorld.z = Camera.main.transform.position.z;
-                planeNormal = Vector3.forward;
-                break;
-            default:
-                throw new System.NotImplementedException("Not sure what to do with that restraint, do a position one instead");
-        }
+        mouseInWorld.z = Camera.main.transform.position.z;
+        planeNormal = Vector3.forward;
         mouseInWorld = Camera.main.ScreenToWorldPoint(mouseInWorld);
 
         // use that plane for 2d
