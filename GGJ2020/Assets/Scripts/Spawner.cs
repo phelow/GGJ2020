@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnRoutine(List<GameObject> spawnables)
     {
+        float timeToSpawn = 3.0f;
         while (true)
         {
             const float DistanceFromNexus = 100.0f;
@@ -26,7 +27,8 @@ public class Spawner : MonoBehaviour
 
             // Create the object at this point.
             GameObject.Instantiate(objectToSpawn, randomPoint, new Quaternion(0, 0, 0, 0), null);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(timeToSpawn + .5f);
+            timeToSpawn *= .98f;
         }
     }
 }
