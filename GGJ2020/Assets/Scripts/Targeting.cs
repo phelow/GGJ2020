@@ -43,7 +43,7 @@ public static class TargetingHelper
                 continue;
             }
             Vector2 direction = (new Vector2(target.transform.position.x, target.transform.position.y) - shooterPosition).normalized;
-            RaycastHit2D hit = Physics2D.Raycast(shooterPosition + direction * 4, direction);
+            RaycastHit2D hit = Physics2D.Raycast(shooterPosition + direction*2.0f, direction);
             if (hit.transform != target.transform)
             {
                 return;
