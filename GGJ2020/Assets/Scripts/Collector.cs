@@ -99,11 +99,11 @@ public class Collector : MonoBehaviour
         RaycastHit hitInfo;
         var dir = item.transform.position - transform.position;
         // Debug.DrawRay(transform.position, dir);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 1000);
-        if (hit != null)
+        RaycastHit2D [] hit = Physics2D.RaycastAll(transform.position, dir, 1000);
+        if (hit.Length >= 2)
         {
             // make sure the object hit matches the supplied item
-            return item.gameObject == hit.collider.gameObject;
+            return item.gameObject == hit[1].collider.gameObject;
         }
 
         return false;
