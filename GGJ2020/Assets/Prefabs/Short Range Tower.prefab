@@ -136,6 +136,7 @@ MonoBehaviour:
   healthBar: {fileID: 7874513385688537884}
   rigidbody2D: {fileID: 7830708415639433395}
   pullable: {fileID: 8775964323209989765}
+  repairSound: {fileID: 0}
 --- !u!50 &7830708415639433395
 Rigidbody2D:
   serializedVersion: 4
@@ -458,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 224245669313364630, guid: 14a759585291f914c86607be50c213cc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.96
+      value: -1.681
       objectReference: {fileID: 0}
     - target: {fileID: 224245669313364630, guid: 14a759585291f914c86607be50c213cc,
         type: 3}
