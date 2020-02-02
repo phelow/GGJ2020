@@ -66,7 +66,7 @@ public class SeekEnemy : MonoBehaviour
 
         lock (collidedObject)
         {
-            collidedObject.Hit(movementVector);
+            collidedObject.Hit(movementVector * 100.0f);
         }
 
         Destroy(this.gameObject);
