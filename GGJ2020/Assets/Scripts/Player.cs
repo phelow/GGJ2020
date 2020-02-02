@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
 
     [Tooltip("normal of the 2d plane that the game will be played on can only be 1 of the 3 axises due to rigidbody limitations")]
     public RigidbodyConstraints normalOf2dPlane = RigidbodyConstraints.FreezePositionZ;
+
+    public Jetpack jetpack;
     #endregion
 
     private void Awake()
@@ -42,25 +45,11 @@ public class Player : MonoBehaviour
         mRigidBody = GetComponent<Rigidbody>();
         mRigidBody.constraints = normalOf2dPlane;
         mCurrentJuice = juice;
+
+        //start logic
+        StartCoroutine(controlLogic());
     }
 
-    void Update()
-    {
-        mMoving = Input.GetMouseButton(0);
-        mRigidBody.drag = friction;
-
-        faceDirection();
-
-        //IDLE LOGIC
-        //Recharge jet pack
-        if (!mMoving)
-        {
-            if (mCurrentJuice < juice)
-                mCurrentJuice += chargeRate * Time.deltaTime;
-        }
-    }
-
-    //Good for updats involving physics
     private void FixedUpdate()
     {
         //PHYSICS LOGIC
@@ -116,6 +105,30 @@ public class Player : MonoBehaviour
         Vector3 directionToMouse = Vector3.ProjectOnPlane(mouseInWorld - this.transform.position, planeNormal);
         Quaternion rotation = Quaternion.LookRotation(directionToMouse, planeNormal);
         mRigidBody.MoveRotation(rotation);
+    }
+
+    private IEnumerator controlLogic()
+    {
+        while(true)
+        {
+            mMoving = Input.GetMouseButton(0);
+            mRigidBody.drag = friction;
+
+            faceDirection();
+
+            //IDLE LOGIC
+            //Recharge jet pack
+            if (!mMoving)
+            {
+                if (mCurrentJuice < juice)
+                    mCurrentJuice += chargeRate * Time.deltaTime;
+            }
+
+            if (jetpack != null)
+                jetpack.setState(mMoving);
+
+            yield return null;
+        }
     }
     #endregion
 }
