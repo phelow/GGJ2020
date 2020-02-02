@@ -5,15 +5,15 @@ using UnityEngine;
 public class TowerSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject tower;
+    private List<GameObject> towers;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnRoutine(tower));
+        StartCoroutine(SpawnRoutine(towers));
     }
 
-    private IEnumerator SpawnRoutine(GameObject spawnable)
+    private IEnumerator SpawnRoutine(List<GameObject> towers)
     {
         while (true)
         {
@@ -22,7 +22,7 @@ public class TowerSpawner : MonoBehaviour
             Vector3 randomPoint = this.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized * Random.Range(10.0f, DistanceFromNexus);
 
             // Create the object at this point.
-            GameObject.Instantiate(spawnable, randomPoint, new Quaternion(0, 0, 0, 0), null);
+            GameObject.Instantiate(towers[Random.Range(0, towers.Count)], randomPoint, new Quaternion(0, 0, 0, 0), null);
             yield return new WaitForSeconds(10.0f);
         }
     }

@@ -14,6 +14,11 @@ public class TowerTargeting : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rigidbody2D;
 
+    [SerializeField]
+    float MaxTargetingDistance = 35.0f;
+
+    [SerializeField]
+    float reloadTime = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +45,9 @@ public class TowerTargeting : MonoBehaviour
     {
         while (true)
         {
-            const float MaxTargetingDistance = 35.0f;
-
             TargetingHelper.ShootNearestTarget(pMissile, this.transform.position, MaxTargetingDistance, false);
 
-            yield return new WaitForSeconds(Mathf.Lerp(10.0f, 1.0f, healthManager.GetHealthRatio()));
+            yield return new WaitForSeconds(Mathf.Lerp(10.0f, 1.0f, healthManager.GetHealthRatio()) * reloadTime);
         }
     }
 }
