@@ -25,7 +25,7 @@ public class AsteroidBeltSpawner : MonoBehaviour
             ringVector *= (Random.Range(10.0f, radius));
             curAsteroid = GameObject.Instantiate(asteroidObj, CenterPos + ringVector, Quaternion.identity,this.transform);
             float circularScale = Random.Range(5f, 10.0f);
-            curAsteroid.transform.localScale = new Vector3(circularScale, circularScale, Random.Range(5f, 10.0f)).normalized * Random.Range(2.0f, 20.0f);
+            curAsteroid.transform.localScale = new Vector3(circularScale, circularScale, Random.Range(5f, 10.0f)).normalized * Random.Range(4.0f, 20.0f);
 
             if (lastAsteroid != null)
             {
