@@ -38,6 +38,13 @@ public class FindNearestResource : MonoBehaviour
                     continue;
                 }
 
+                TowerHealthManager health = collider.GetComponent<TowerHealthManager>();
+
+                if (health.GetHealthRatio() == 1.0f)
+                {
+                    continue;
+                }
+
                 if (Vector2.Distance(nearestResource.transform.position, this.transform.position) > Vector2.Distance(resource.transform.position, this.transform.position))
                 {
                     nearestResource = resource;
