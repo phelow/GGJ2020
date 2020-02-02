@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     public float drainRate = 100; //How fast the jetpact uses juices when moving
     [Range(1, 500)]
     public float chargeRate = 200; //How fast the jetpack refuels when idle
+    public AudioSource thrusterAudio; // audio when moving.
     #endregion
 
     private double GetJuice()
@@ -98,11 +99,15 @@ public class Player : MonoBehaviour
         //PHYSICS LOGIC
         if (mMoving && mCurrentJuice > 0.0f)
         {
+            if (!thrusterAudio.isPlaying)
+                thrusterAudio.Play();
             move();
             return;
         }
-
-
+        else
+        {
+            thrusterAudio.Stop();
+        }
         mRigidBody.angularVelocity = 0;
 
         AddJuice(chargeRate * Time.deltaTime);
