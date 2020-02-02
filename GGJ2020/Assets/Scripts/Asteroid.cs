@@ -44,6 +44,6 @@ public class Asteroid : MonoBehaviour
 
         Vector2 direction = (this.transform.position - nexus.transform.position).normalized;
 
-        rb.AddForce(direction * 10.0f);
+        rb.AddForce(direction * 1.0f);
     }
 }

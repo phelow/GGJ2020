@@ -7,8 +7,8 @@ public class TowerHealthManager : HealthManager
     private bool isInvulnerable = false;
     private void Start()
     {
+        TakeHit(new Vector2(0, 0), Random.Range(10.0f, MaxHealth - 1.0f));
         StartCoroutine(Invulnerability());
-        TakeHit(Random.Range(10.0f, MaxHealth - 1.0f));
     }
 
     private IEnumerator Invulnerability()
@@ -21,5 +21,23 @@ public class TowerHealthManager : HealthManager
     protected override bool IsInvulnerable()
     {
         return isInvulnerable;
+    }
+
+    public void RepairFort()
+    {
+        if (!ResourceTracker.instance.HasCharge())
+        {
+            return;
+        }
+
+        if (health == MaxHealth)
+        {
+            return;
+        }
+
+        Hammer.instance.SetTerminus(this.transform.position);
+        ResourceTracker.instance.UseCharge();
+        health = MaxHealth;
+        healthBar.SetValue(GetHealthRatio());
     }
 }

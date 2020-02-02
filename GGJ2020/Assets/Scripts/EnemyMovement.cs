@@ -54,7 +54,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-        health.TakeHit(10.0f);
-        enemyHealthManager.TakeHit(float.MaxValue);
+        health.TakeHit(new Vector2(0, 0), 10.0f);
+        enemyHealthManager.TakeHit(new Vector2(0, 0), float.MaxValue);
     }
 }

@@ -8,11 +8,13 @@ public class SeekEnemy : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rigidbody2D;
 
-    private bool isTargetingPlayer;
+    private bool isTargetingEnemyTeam;
+    private float knockbackModifier;
 
-    internal void AssignTarget(GameObject target, bool targetPlayer)
+    internal void AssignTarget(GameObject target, float missileKnockbackModifier, bool targetPlayerTeam)
     {
-        isTargetingPlayer = targetPlayer;
+        knockbackModifier = missileKnockbackModifier;
+        isTargetingEnemyTeam = targetPlayerTeam;
         StartCoroutine(SeekTarget(target));
         StartCoroutine(DelayedDestroy());
     }
@@ -24,7 +26,7 @@ public class SeekEnemy : MonoBehaviour
 
     private IEnumerator SeekTarget(GameObject target)
     {
-        for (int fuel = 5; fuel > 0; fuel--)
+        for (int fuel = 10; fuel > 0; fuel--)
         {
             if (target == null)
             {
@@ -50,21 +52,23 @@ public class SeekEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Targetable target = collision.gameObject.GetComponent<Targetable>();
+        Targetable collidedObject = collision.gameObject.GetComponent<Targetable>();
 
-        if (target == null)
+        if (collidedObject == null)
         {
             return;
         }
 
-        if (target.IsPlayersTeam != isTargetingPlayer)
+        if (!((collidedObject.IsPlayersTeam && isTargetingEnemyTeam) || (!collidedObject.IsPlayersTeam && !isTargetingEnemyTeam)))
         {
             return;
         }
 
-        lock (target)
+        Vector2 movementVector = (collision.transform.position - this.transform.position).normalized;
+
+        lock (collidedObject)
         {
-            target.Hit();
+            collidedObject.Hit(movementVector * 100.0f * knockbackModifier);
         }
 
         Destroy(this.gameObject);
