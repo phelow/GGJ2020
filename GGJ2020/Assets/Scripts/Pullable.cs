@@ -25,14 +25,11 @@ public class Pullable : MonoBehaviour
 
     protected virtual float GetPullForce(float distance)
     {
-        const float MaxForce = 5.0f;
+        const float MaxForce = 20.0f;
         const float MinForce = .5f;
 
-        const float MaxDistance = 20.0f;
-        const float MinDistance = 1.0f;
-
-        const float DistanceExponent = 5.0f;
-        return Mathf.Lerp(MaxForce, MinForce, Mathf.InverseLerp(MinDistance, MaxDistance, Mathf.Pow(distance, DistanceExponent)));
+        const float DistanceExponent = 2.0f;
+        return Mathf.Lerp(MaxForce, MinForce, Mathf.Pow( distance,2.0f)) * 100.0f;
     }
 
     internal void PullTowardsNexus(Vector3 nexusPosition)
