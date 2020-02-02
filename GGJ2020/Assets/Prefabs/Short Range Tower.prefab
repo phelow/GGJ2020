@@ -104,8 +104,8 @@ MonoBehaviour:
     type: 3}
   healthManager: {fileID: 6706361682695259550}
   rigidbody2D: {fileID: 7830708415639433395}
-  MaxTargetingDistance: 30
-  reloadTime: 0.1
+  MaxTargetingDistance: 10
+  reloadTime: 1
   missileKnockBackModifier: 3
 --- !u!114 &-2413127078805176192
 MonoBehaviour:
