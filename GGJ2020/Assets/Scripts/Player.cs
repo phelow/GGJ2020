@@ -3,6 +3,8 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
+    internal static Player instance;
+
     #region  Private Members
     private Rigidbody mRigidBody;
     private string mTag = "Player";
@@ -26,6 +28,11 @@ public class Player : MonoBehaviour
     [Tooltip("normal of the 2d plane that the game will be played on can only be 1 of the 3 axises due to rigidbody limitations")]
     public RigidbodyConstraints normalOf2dPlane = RigidbodyConstraints.FreezePositionZ;
     #endregion
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
