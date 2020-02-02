@@ -40,14 +40,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         mMoving = Input.GetMouseButton(0);
-        bool grabbing = Input.GetMouseButtonDown(1);
         mRigidBody.drag = friction;
 
         faceDirection();
-
-        //Grab
-        if (grabbing)
-            grab();
 
         //IDLE LOGIC
         //Recharge jet pack
@@ -80,39 +75,35 @@ public class Player : MonoBehaviour
         }
     }
 
-    //Grabs an object if there is an object presents
-    private void grab()
-    {
-
-    }
-
     #endregion
 
     #region Helper Classes
-    //Faces the player to the direction that the mouse is pointing at
+    /// <summary> Face this player towards the mouse cursor </summary>
     private void faceDirection()
     {
         // determine players mouse cursor position in world
         var mouseInWorld = Input.mousePosition;
-        mouseInWorld.z = Camera.main.transform.position.z;
-        mouseInWorld = Camera.main.ScreenToWorldPoint(mouseInWorld);
 
         // determine what plane is in the 3d space
         Vector3 planeNormal;
         switch (normalOf2dPlane)
         {
             case RigidbodyConstraints.FreezePositionX:
+                mouseInWorld.z = Camera.main.transform.position.x;
                 planeNormal = Vector3.right;
                 break;
             case RigidbodyConstraints.FreezePositionY:
+                mouseInWorld.z = Camera.main.transform.position.y;
                 planeNormal = Vector3.up;
                 break;
             case RigidbodyConstraints.FreezePositionZ:
+                mouseInWorld.z = Camera.main.transform.position.z;
                 planeNormal = Vector3.forward;
                 break;
             default:
                 throw new System.NotImplementedException("Not sure what to do with that restraint, do a position one instead");
         }
+        mouseInWorld = Camera.main.ScreenToWorldPoint(mouseInWorld);
 
         // use that plane for 2d
         Vector3 directionToMouse = Vector3.ProjectOnPlane(mouseInWorld - this.transform.position, planeNormal);
@@ -121,4 +112,3 @@ public class Player : MonoBehaviour
     }
     #endregion
 }
-

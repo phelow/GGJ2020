@@ -801,6 +801,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3430128988572067271, guid: 93428b5bbd995ba48aa4559e42c6b756,
+        type: 3}
+      propertyPath: normalOf2dPlane
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3430128988572067274, guid: 93428b5bbd995ba48aa4559e42c6b756,
         type: 3}
       propertyPath: m_LocalPosition.x
