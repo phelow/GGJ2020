@@ -149,6 +149,7 @@ MonoBehaviour:
   healthBar: {fileID: 7874513385688537884}
   rigidbody2D: {fileID: 7830708415639433395}
   pullable: {fileID: 8775964323209989765}
+  repairSound: {fileID: 692707899948914960}
 --- !u!50 &7830708415639433395
 Rigidbody2D:
   serializedVersion: 4
@@ -237,17 +238,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6706361682695259550}
         m_MethodName: RepairFort
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 692707899948914960}
-        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

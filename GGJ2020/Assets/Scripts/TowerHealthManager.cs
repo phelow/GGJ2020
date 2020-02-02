@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerHealthManager : HealthManager
 {
     private bool isInvulnerable = false;
+    public AudioSource repairSound;
     private void Start()
     {
         TakeHit(new Vector2(0, 0), Random.Range(10.0f, MaxHealth - 1.0f));
@@ -39,5 +40,6 @@ public class TowerHealthManager : HealthManager
         ResourceTracker.instance.UseCharge();
         health = MaxHealth;
         healthBar.SetValue(GetHealthRatio());
+        repairSound.Play();
     }
 }
