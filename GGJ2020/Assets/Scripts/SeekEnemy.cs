@@ -26,7 +26,7 @@ public class SeekEnemy : MonoBehaviour
 
     private IEnumerator SeekTarget(GameObject target)
     {
-        for (int fuel = 20; fuel > 0; fuel--)
+        for (int fuel = 10; fuel > 0; fuel--)
         {
             if (target == null)
             {
@@ -52,23 +52,12 @@ public class SeekEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerHealthManager player = collision.gameObject.GetComponent<PlayerHealthManager>();
-        if (player != null)
-        {
-            Vector2 playerMovementVector = (collision.transform.position - this.transform.position).normalized;
-            player.TakeHit(playerMovementVector);
-            Destroy(this.gameObject);
-            return;
-        }
-
         Targetable collidedObject = collision.gameObject.GetComponent<Targetable>();
 
         if (collidedObject == null)
         {
             return;
         }
-
-       
 
         if (!((collidedObject.IsPlayersTeam && isTargetingEnemyTeam) || (!collidedObject.IsPlayersTeam && !isTargetingEnemyTeam)))
         {

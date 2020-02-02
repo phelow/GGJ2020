@@ -14,7 +14,7 @@ public class HealthManager : MonoBehaviour
     protected const float MaxHealth = 100.0f;
     protected float health = MaxHealth;
 
-    internal virtual void TakeHit(Vector2 movementVector, float damageToTake = 30.0f)
+    internal virtual void TakeHit(Vector2 movementVector, float damageToTake = 10.0f)
     {
         rigidbody2D.AddForce(movementVector);
         if (IsInvulnerable())
