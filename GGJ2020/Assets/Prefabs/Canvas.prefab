@@ -457,11 +457,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hello Droog! Your silver-like satellites are being damaged by the bratchny
-    bruiseboys and need to be repaired. satellites cost a pretty polly to be repaired
-    and unfortunately you are oddy knocky(on your own).This nochy(night) will determine
-    the future of our great nation! Good luck Comrade cosmonaut, we will be watching
-    you on the worldcast.\r\n"
+  m_text: Hello Droog! Your silver-like satellites are being damaged by the bratchny
+    bruiseboys and need to be repaired with the green resources. satellites cost a
+    pretty polly and unfortunately you are oddy knocky(on your own).This nochy will
+    determine the future of our great nation! Good luck Comrade cosmonaut, we will
+    be watching on the worldcast.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b8547083cc0fcc469d303d27e2e4588, type: 2}
   m_sharedMaterial: {fileID: 261159568523195101, guid: 8b8547083cc0fcc469d303d27e2e4588,
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 257
-  m_characterSpacing: 2
+  m_characterSpacing: 3
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 111
+  m_firstOverflowCharacterIndex: 119
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -531,12 +531,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 854144251}
-    characterCount: 345
+    characterCount: 342
     spriteCount: 0
-    spaceCount: 54
-    wordCount: 57
+    spaceCount: 53
+    wordCount: 56
     linkCount: 0
-    lineCount: 7
+    lineCount: 6
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -566,7 +566,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dd87d44e8ca44a24f9f4ed0c41bde6ee, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.33
   m_Pitch: 1
   Loop: 1
   Mute: 0

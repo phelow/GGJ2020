@@ -564,38 +564,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 854144251, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
-      propertyPath: m_text
-      value: "Hello Droog! Your silver-like satellites are being damaged by the bratchny
-        bruiseboys and need to be repaired. satellites cost a pretty polly to be repaired
-        and unfortunately you are oddy knocky(on your own).This nochy will determine
-        the future of our great nation! Good luck Comrade cosmonaut, we will be watching
-        you on the worldcast.\r\n"
-      objectReference: {fileID: 0}
-    - target: {fileID: 854144251, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 338
-      objectReference: {fileID: 0}
-    - target: {fileID: 854144251, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 854144251, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 854144251, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
-      propertyPath: m_characterSpacing
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 854144251, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: 111
-      objectReference: {fileID: 0}
     - target: {fileID: 854144253, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
-      propertyPath: m_Volume
-      value: 0.33
-      objectReference: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8a322700b03d78f4b93dcb1a5d121d2f, type: 3}
     - target: {fileID: 1627630353, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
       propertyPath: m_Material
       value: 
@@ -603,6 +575,10 @@ PrefabInstance:
     - target: {fileID: 1627630353, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089791415, guid: e2bfa9833832f7047ade2be96552a3ad, type: 3}
+      propertyPath: destroyTime
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 489062704073196865, guid: e2bfa9833832f7047ade2be96552a3ad,
         type: 3}
