@@ -131,4 +131,10 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
+
+    void OnCollisionEnter(Collision collision)
+    {
+        
+        CameraShake.Instance.ShakeByFactor(1.5f);
+    }
 }
