@@ -5,10 +5,13 @@ public class Player : MonoBehaviour
 {
     internal static Player instance;
 
+    [SerializeField]
+    private ProgressBarPro juiceBar;
+
     #region  Private Members
     private Rigidbody mRigidBody;
     private string mTag = "Player";
-    public double mCurrentJuice;
+    public float mCurrentJuice;
     private bool mMoving;
     #endregion
 
@@ -29,6 +32,25 @@ public class Player : MonoBehaviour
     public RigidbodyConstraints normalOf2dPlane = RigidbodyConstraints.FreezePositionZ;
     #endregion
 
+    private double GetJuice()
+    {
+        return mCurrentJuice;
+    }
+
+    public void AddJuice(float addedJuice)
+    {
+        mCurrentJuice += addedJuice;
+        mCurrentJuice = Mathf.Min(mCurrentJuice, juice);
+        juiceBar.SetValue(mCurrentJuice / juice);
+    }
+
+    public void SubtractJuice(float subtractedJuice)
+    {
+        mCurrentJuice -= subtractedJuice;
+        mCurrentJuice = Mathf.Min(subtractedJuice, juice);
+        juiceBar.SetValue(mCurrentJuice / juice);
+    }
+
     private void Awake()
     {
         instance = this;
@@ -41,7 +63,7 @@ public class Player : MonoBehaviour
         //Set attributes
         mRigidBody = GetComponent<Rigidbody>();
         mRigidBody.constraints = normalOf2dPlane;
-        mCurrentJuice = juice;
+        AddJuice(juice);
     }
 
     void Update()
@@ -55,8 +77,7 @@ public class Player : MonoBehaviour
         //Recharge jet pack
         if (!mMoving)
         {
-            if (mCurrentJuice < juice)
-                mCurrentJuice += chargeRate * Time.deltaTime;
+            AddJuice(chargeRate * Time.deltaTime);
         }
     }
 
@@ -77,7 +98,7 @@ public class Player : MonoBehaviour
         if (mCurrentJuice > 0)
         {
             //drain jet pack
-            mCurrentJuice -= drainRate * Time.deltaTime;
+            SubtractJuice(drainRate * Time.deltaTime);
             mRigidBody.AddForce(transform.forward * thrust, ForceMode.Force);
         }
     }
