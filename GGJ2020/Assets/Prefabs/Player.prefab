@@ -109,19 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineRenderer: {fileID: 4237277148397240959}
---- !u!114 &1649257233262531248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3372993565027780135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d5374bc38828364b9bad6b5275e672d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineRenderer: {fileID: 564772417951799239}
 --- !u!120 &564772417951799239
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -218,6 +205,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1649257233262531248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372993565027780135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5374bc38828364b9bad6b5275e672d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LineRenderer: {fileID: 564772417951799239}
 --- !u!1 &3430128988572067264
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juiceBar: {fileID: 0}
   mCurrentJuice: 0
-  thrust: 30
+  thrust: 300
   turn: 0
   friction: 2
   juice: 500
@@ -358,7 +358,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
