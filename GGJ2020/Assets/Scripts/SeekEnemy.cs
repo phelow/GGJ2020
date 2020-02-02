@@ -24,7 +24,7 @@ public class SeekEnemy : MonoBehaviour
 
     private IEnumerator SeekTarget(GameObject target)
     {
-        for (int fuel = 5; fuel > 0; fuel--)
+        for (int fuel = 10; fuel > 0; fuel--)
         {
             if (target == null)
             {
