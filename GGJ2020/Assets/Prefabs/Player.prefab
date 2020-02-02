@@ -96,9 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juiceBar: {fileID: 0}
   mCurrentJuice: 0
-  thrust: 30
+  thrust: 100
   turn: 100
-  friction: 2
+  friction: 0.1
   juice: 500
   drainRate: 100
   chargeRate: 200
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

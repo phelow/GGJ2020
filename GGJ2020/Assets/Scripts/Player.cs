@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        mMoving = Input.GetMouseButton(0);
+        mMoving = Input.GetMouseButtonDown(0);
         mRigidBody.drag = friction;
 
         faceDirection();
