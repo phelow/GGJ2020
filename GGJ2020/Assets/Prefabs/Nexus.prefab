@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towers:
   - {fileID: 3341146406007824668, guid: c3e687f089b8fd24a9239675adaaf767, type: 3}
-  - {fileID: 0}
+  - {fileID: 3341146406007824668, guid: 2d91c280a3895ae4da8216600e4be7d3, type: 3}
 --- !u!1001 &5253989055861064494
 PrefabInstance:
   m_ObjectHideFlags: 0
