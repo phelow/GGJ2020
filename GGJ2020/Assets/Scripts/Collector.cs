@@ -56,7 +56,7 @@ public class Collector : MonoBehaviour
 
     internal bool TrySendClick()
     {
-        if (lastHovering != null)
+        if (lastHovering != null && lastHovering.CanClick())
         {
             lastHovering.ClickIt();
             return true;

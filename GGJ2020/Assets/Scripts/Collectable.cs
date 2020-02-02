@@ -40,7 +40,10 @@ public class Collectable : MonoBehaviour
         outline = this.GetComponent<Outline>();
     }
 
-    //void Update() { }
+    public virtual bool CanClick()
+    {
+        return true;
+    }
 
     /// <summary> Sets the state of the clickable to clicked </summary>
     public void ClickIt()

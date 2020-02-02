@@ -30,8 +30,13 @@ public class TowerHealthManager : HealthManager
             return;
         }
 
+        if (health == MaxHealth)
+        {
+            return;
+        }
+
         ResourceTracker.instance.UseCharge();
-        health = Mathf.Max(health + 30.0f, MaxHealth);
+        health = MaxHealth;
         healthBar.SetValue(GetHealthRatio());
     }
 }
