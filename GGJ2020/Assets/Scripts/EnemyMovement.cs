@@ -35,6 +35,7 @@ public class EnemyMovement : MonoBehaviour
 
             // Add the deviation to the current movement
             rigidbody2D.AddForce(newImpulse);
+            this.transform.LookAt(newImpulse);
 
             yield return new WaitForSeconds(1.0f);
         }
