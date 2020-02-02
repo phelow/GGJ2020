@@ -35,7 +35,12 @@ public class Collector : MonoBehaviour
     {
         updateItemClickability();
 
-        if (lastHovering != null && Input.GetButtonUp(ClickButton))
+        if (!Input.GetMouseButtonDown(0))
+        {
+            return;
+        }
+
+        if (lastHovering != null)
         {
             lastHovering.ClickIt();
         }
@@ -99,7 +104,7 @@ public class Collector : MonoBehaviour
         RaycastHit hitInfo;
         var dir = item.transform.position - transform.position;
         // Debug.DrawRay(transform.position, dir);
-        RaycastHit2D [] hit = Physics2D.RaycastAll(transform.position, dir, 1000);
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, dir, 1000);
         if (hit.Length >= 2)
         {
             // make sure the object hit matches the supplied item
