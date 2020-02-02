@@ -17,36 +17,74 @@ public class FindNearestResource : MonoBehaviour
     {
         resourceLineRenderer.SetPosition(0, this.transform.position);
         resourceLineRenderer.SetPosition(1, this.transform.position);
-        Collider2D [] collisions = Physics2D.OverlapCircleAll(this.transform.position, 50.0f);
 
-        Resource nearestResource = null;
-        foreach (Collider2D collider in collisions)
+        if (ResourceTracker.instance.HasCharge())
         {
-            Resource resource = collider.GetComponent<Resource>();
 
-            if (resource == null)
+            Collider2D[] collisions = Physics2D.OverlapCircleAll(this.transform.position, 100.0f);
+            TowerCollectable nearestResource = null;
+            foreach (Collider2D collider in collisions)
             {
-                continue;
+                TowerCollectable resource = collider.GetComponent<TowerCollectable>();
+
+                if (resource == null)
+                {
+                    continue;
+                }
+
+                if (nearestResource == null)
+                {
+                    nearestResource = resource;
+                    continue;
+                }
+
+                if (Vector2.Distance(nearestResource.transform.position, this.transform.position) > Vector2.Distance(resource.transform.position, this.transform.position))
+                {
+                    nearestResource = resource;
+                }
             }
 
             if (nearestResource == null)
             {
-                nearestResource = resource;
-                continue;
+                return;
             }
 
-            if (Vector2.Distance(nearestResource.transform.position, this.transform.position) > Vector2.Distance(resource.transform.position, this.transform.position))
-            {
-                nearestResource = resource;
-            }
+            resourceLineRenderer.SetPosition(1, this.transform.position);
+            resourceLineRenderer.SetPosition(0, nearestResource.transform.position);
         }
-
-        if (nearestResource == null)
+        else
         {
-            return;
-        }
+            Collider2D[] collisions = Physics2D.OverlapCircleAll(this.transform.position, 50.0f);
 
-        resourceLineRenderer.SetPosition(1, this.transform.position);
-        resourceLineRenderer.SetPosition(0, nearestResource.transform.position);
+            Resource nearestResource = null;
+            foreach (Collider2D collider in collisions)
+            {
+                Resource resource = collider.GetComponent<Resource>();
+
+                if (resource == null)
+                {
+                    continue;
+                }
+
+                if (nearestResource == null)
+                {
+                    nearestResource = resource;
+                    continue;
+                }
+
+                if (Vector2.Distance(nearestResource.transform.position, this.transform.position) > Vector2.Distance(resource.transform.position, this.transform.position))
+                {
+                    nearestResource = resource;
+                }
+            }
+
+            if (nearestResource == null)
+            {
+                return;
+            }
+
+            resourceLineRenderer.SetPosition(1, this.transform.position);
+            resourceLineRenderer.SetPosition(0, nearestResource.transform.position);
+        }
     }
 }
