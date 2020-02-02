@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Score : MonoBehaviour
 {
@@ -11,12 +12,23 @@ public class Score : MonoBehaviour
     void Start()
     {
          scoreText = gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+        StartCoroutine(IncrementScore());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator IncrementScore()
     {
-        score++;
-        scoreText.text = score.ToString();
+        while (true)
+        {
+            score++;
+
+            int highScore = PlayerPrefs.GetInt("HighScore", 0);
+            if (score > highScore)
+            {
+                PlayerPrefs.SetInt("HighScore", highScore);
+            }
+
+            scoreText.text = score.ToString();
+            yield return new WaitForSeconds(1.0f);
+        }
     }
 }
