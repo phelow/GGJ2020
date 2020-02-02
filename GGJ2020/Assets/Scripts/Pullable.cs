@@ -29,7 +29,7 @@ public class Pullable : MonoBehaviour
         const float MinForce = .5f;
 
         const float DistanceExponent = 2.0f;
-        return Mathf.Lerp(MaxForce, MinForce, Mathf.Pow( distance,2.0f)) * 100.0f;
+        return Mathf.Lerp(MaxForce, MinForce, Mathf.Pow( distance,3.0f)) * 100.0f;
     }
 
     internal void PullTowardsNexus(Vector3 nexusPosition)
