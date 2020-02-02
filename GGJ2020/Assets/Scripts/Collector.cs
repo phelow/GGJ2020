@@ -25,6 +25,28 @@ public class Collector : MonoBehaviour
 
     void Start()
     {
+        // ensures Physics2D does not always return this Collector
+        // Physics2D.queriesStartInColliders = false;
+        // Code above enables code below to be functional
+        // /// <summary>
+        // /// Returns true if there is no obstable between the center of this object and the supplied item
+        // /// </summary>
+        // private bool isInLineOfSight(Collider2D item)
+        // {
+        //     var dir = item.transform.position - transform.position;
+        //     // Debug.DrawRay(transform.position, dir);
+        //     RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 1000);
+        // 
+        //     if (hit.collider != null)
+        //     {
+        //         // Debug.Log(item.name + " triggered hit on " + hit.collider.name);
+        //         // make sure the object hit matches the supplied item
+        //         return item.gameObject == hit.collider.gameObject;
+        //     }
+        // 
+        //     return false;
+        // }
+
         allItems = FindObjectsOfType<Collectable>();
         foreach (var item in allItems)
         {
@@ -102,7 +124,6 @@ public class Collector : MonoBehaviour
     /// </summary>
     private bool isInLineOfSight(Collider2D item)
     {
-        RaycastHit hitInfo;
         var dir = item.transform.position - transform.position;
         // Debug.DrawRay(transform.position, dir);
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, dir, 1000);
