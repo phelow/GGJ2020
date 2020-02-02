@@ -27,7 +27,12 @@ public static class TargetingHelper
                 continue;
             }
 
-            if ((target.IsPlayersTeam && !targetPlayerTeam) || (!target.IsPlayersTeam && targetPlayerTeam))
+            if (target.IsPlayersTeam && !targetPlayerTeam)
+            {
+                continue;
+            }
+
+            if (!target.IsPlayersTeam && targetPlayerTeam)
             {
                 continue;
             }
