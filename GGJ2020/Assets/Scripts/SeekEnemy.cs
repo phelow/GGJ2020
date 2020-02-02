@@ -9,9 +9,11 @@ public class SeekEnemy : MonoBehaviour
     private Rigidbody2D rigidbody2D;
 
     private bool isTargetingEnemyTeam;
+    private float knockbackModifier;
 
-    internal void AssignTarget(GameObject target, bool targetPlayerTeam)
+    internal void AssignTarget(GameObject target, float missileKnockbackModifier, bool targetPlayerTeam)
     {
+        knockbackModifier = missileKnockbackModifier;
         isTargetingEnemyTeam = targetPlayerTeam;
         StartCoroutine(SeekTarget(target));
         StartCoroutine(DelayedDestroy());
@@ -66,7 +68,7 @@ public class SeekEnemy : MonoBehaviour
 
         lock (collidedObject)
         {
-            collidedObject.Hit(movementVector * 100.0f);
+            collidedObject.Hit(movementVector * 100.0f * knockbackModifier);
         }
 
         Destroy(this.gameObject);

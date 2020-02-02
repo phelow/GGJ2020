@@ -19,7 +19,7 @@ public class ShootNearestPlayerTarget : MonoBehaviour
         {
             const float MaxTargetingDistance = 5.0f;
 
-            TargetingHelper.ShootNearestTarget(pMissile, this.transform.position, MaxTargetingDistance, true);
+            TargetingHelper.ShootNearestTarget(pMissile, this.transform.position, MaxTargetingDistance, 1.0f, true);
 
             yield return new WaitForSeconds(1.0f);
         }

@@ -132,6 +132,7 @@ MonoBehaviour:
   rigidbody2D: {fileID: 7830708415639433395}
   MaxTargetingDistance: 10
   reloadTime: 0.1
+  missileKnockBackModifier: 10
 --- !u!114 &-2413127078805176192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7874513385688537884}
+  rigidbody2D: {fileID: 7830708415639433395}
   pullable: {fileID: 8775964323209989765}
 --- !u!50 &7830708415639433395
 Rigidbody2D:

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class TargetingHelper
 {
-    internal static void ShootNearestTarget(GameObject missilePrefab, Vector2 shooterPosition, float MaxTargetingDistance, bool targetPlayerTeam)
+    internal static void ShootNearestTarget(GameObject missilePrefab, Vector2 shooterPosition, float MaxTargetingDistance, float missileKnockbackModifier, bool targetPlayerTeam)
     {
         // Find the nearest enemy in range
         Collider2D[] collisions = Physics2D.OverlapCircleAll(shooterPosition, MaxTargetingDistance);
@@ -51,7 +51,7 @@ public static class TargetingHelper
             // Shoot at it
             SeekEnemy missile = GameObject.Instantiate(missilePrefab, shooterPosition, new Quaternion(0, 0, 0, 0)).GetComponent<SeekEnemy>();
 
-            missile.AssignTarget(closestTarget.gameObject, targetPlayerTeam);
+            missile.AssignTarget(closestTarget.gameObject, missileKnockbackModifier, targetPlayerTeam);
         }
     }
 }

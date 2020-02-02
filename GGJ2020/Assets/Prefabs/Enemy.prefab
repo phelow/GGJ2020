@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8186113078886415359}
+  rigidbody2D: {fileID: 6899598916131687799}
   pullable: {fileID: 6899598916131687798}
   prefabResource: {fileID: 4577495690222932897, guid: dff3da0c8ce5e074eb626960b96f2493,
     type: 3}

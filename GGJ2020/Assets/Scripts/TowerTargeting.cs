@@ -19,6 +19,9 @@ public class TowerTargeting : MonoBehaviour
 
     [SerializeField]
     float reloadTime = 1.0f;
+
+    [SerializeField]
+    float missileKnockBackModifier = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +48,7 @@ public class TowerTargeting : MonoBehaviour
     {
         while (true)
         {
-            TargetingHelper.ShootNearestTarget(pMissile, this.transform.position, MaxTargetingDistance, false);
+            TargetingHelper.ShootNearestTarget(pMissile, this.transform.position, MaxTargetingDistance, missileKnockBackModifier, false);
 
             yield return new WaitForSeconds(Mathf.Lerp(10.0f, 1.0f, healthManager.GetHealthRatio()) * reloadTime);
         }

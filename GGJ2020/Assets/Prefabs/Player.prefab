@@ -202,5 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
+  rigidbody2D: {fileID: 3451232875788539817}
   pullable: {fileID: 0}
   player: {fileID: 3430128988572067271}

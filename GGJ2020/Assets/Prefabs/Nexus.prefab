@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8087454445810826783}
   - component: {fileID: 5743963959357363850}
   - component: {fileID: 8099353837980331722}
+  - component: {fileID: 5224402313895392968}
   m_Layer: 0
   m_Name: Nexus
   m_TagString: Untagged
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
+  rigidbody2D: {fileID: 5224402313895392968}
   pullable: {fileID: 0}
 --- !u!114 &8099353837980331722
 MonoBehaviour:
@@ -169,3 +171,24 @@ MonoBehaviour:
   towers:
   - {fileID: 3341146406007824668, guid: c3e687f089b8fd24a9239675adaaf767, type: 3}
   - {fileID: 3341146406007824668, guid: 2d91c280a3895ae4da8216600e4be7d3, type: 3}
+--- !u!50 &5224402313895392968
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001766258693250439}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
