@@ -38,11 +38,11 @@ public class SeekEnemy : MonoBehaviour
                 // Calculate vector to target
                 Vector2 directionToTarget = (target.transform.position - this.transform.position).normalized;
 
-                const float MissileSpeed = 150.0f;
+                const float MissileSpeed = 300.0f;
 
                 transform.LookAt(target.transform.position);
                 // Add force in direction
-                rigidbody2D.AddForce(directionToTarget * MissileSpeed);
+                rigidbody2D.AddForce(directionToTarget * MissileSpeed * rigidbody2D.mass);
             }
 
             yield return new WaitForSeconds(1.0f);
@@ -62,16 +62,9 @@ public class SeekEnemy : MonoBehaviour
             return;
         }
 
-        Targetable collidedObject = collision.gameObject.GetComponent<Targetable>();
+        Targetable collidedObject = collision.gameObject.GetComponentInChildren<Targetable>();
 
         if (collidedObject == null)
-        {
-            return;
-        }
-
-       
-
-        if (!((collidedObject.IsPlayersTeam && isTargetingEnemyTeam) || (!collidedObject.IsPlayersTeam && !isTargetingEnemyTeam)))
         {
             return;
         }

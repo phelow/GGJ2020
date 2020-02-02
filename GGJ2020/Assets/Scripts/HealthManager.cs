@@ -17,10 +17,7 @@ public class HealthManager : MonoBehaviour
     internal virtual void TakeHit(Vector2 movementVector, float damageToTake = 30.0f)
     {
         rigidbody2D.AddForce(movementVector);
-        if (IsInvulnerable())
-        {
-            return;
-        }
+        
         
         health -= damageToTake;
         healthBar.SetValue(GetHealthRatio());
