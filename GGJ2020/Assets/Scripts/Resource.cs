@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
-    [SerializeField]
-    private bool ShouldDestroy = true;
     private void Awake()
     {
-        if (ShouldDestroy)
-        {
-            StartCoroutine(DelayedDestroy());
-        }
+        StartCoroutine(DelayedDestroy());
     }
 
     private IEnumerator DelayedDestroy()
