@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: 73abed5a8c04f50498916b57646c7f0b
+  - enabled: 1
     path: Assets/Scenes/TestScenes/EnemySwarmIntelligenceScene.unity
     guid: 7b0e93b9de9fac047b3aee0dfb9ff919
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 4ec502bdbc4f2e742beb1edbd3686604
   m_configObjects: {}
