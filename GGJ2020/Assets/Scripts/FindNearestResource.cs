@@ -15,9 +15,6 @@ public class FindNearestResource : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        resourceLineRenderer.SetPosition(0, this.transform.position);
-        resourceLineRenderer.SetPosition(1, this.transform.position);
-
         if (ResourceTracker.instance.HasCharge())
         {
 
@@ -32,18 +29,19 @@ public class FindNearestResource : MonoBehaviour
                     continue;
                 }
 
+                TowerHealthManager health = collider.GetComponent<TowerHealthManager>();
+
+                if (health.GetHealthRatio() >= .9f)
+                {
+                    continue;
+                }
+
                 if (nearestResource == null)
                 {
                     nearestResource = resource;
                     continue;
                 }
 
-                TowerHealthManager health = collider.GetComponent<TowerHealthManager>();
-
-                if (health.GetHealthRatio() == 1.0f)
-                {
-                    continue;
-                }
 
                 if (Vector2.Distance(nearestResource.transform.position, this.transform.position) > Vector2.Distance(resource.transform.position, this.transform.position))
                 {
@@ -53,6 +51,8 @@ public class FindNearestResource : MonoBehaviour
 
             if (nearestResource == null)
             {
+                resourceLineRenderer.SetPosition(0, this.transform.position);
+                resourceLineRenderer.SetPosition(1, this.transform.position);
                 return;
             }
 
@@ -87,6 +87,8 @@ public class FindNearestResource : MonoBehaviour
 
             if (nearestResource == null)
             {
+                resourceLineRenderer.SetPosition(0, this.transform.position);
+                resourceLineRenderer.SetPosition(1, this.transform.position);
                 return;
             }
 
