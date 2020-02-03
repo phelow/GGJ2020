@@ -30,6 +30,7 @@ public class SeekEnemy : MonoBehaviour
         {
             if (target == null)
             {
+                Destroy(this.gameObject);
                 yield break;
             }
 
