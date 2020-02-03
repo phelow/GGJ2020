@@ -133,6 +133,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &6665503742396049176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174651903457819830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367687880c724c74ebcc396fde775af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8164342148582188479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,6 +214,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bb54d5cc55c0af49b16783dc9ef33c9, type: 3}
+--- !u!1 &174651903457819830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 9bb54d5cc55c0af49b16783dc9ef33c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8164342148582188479}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3762516850095951525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 9bb54d5cc55c0af49b16783dc9ef33c9,
