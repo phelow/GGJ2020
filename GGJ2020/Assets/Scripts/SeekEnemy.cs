@@ -59,6 +59,11 @@ public class SeekEnemy : MonoBehaviour
         source.volume = .1f;
         source.PlayOneShot(clip);
 
+        NexusPull nexusPull = collision.gameObject.GetComponent<NexusPull>();
+        if (nexusPull != null)
+        {
+            return;
+        }
 
         PlayerHealthManager player = collision.gameObject.GetComponent<PlayerHealthManager>();
         if (player != null)
