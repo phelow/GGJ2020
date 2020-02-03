@@ -50,7 +50,7 @@ public class TowerTargeting : MonoBehaviour
         {
             TargetingHelper.ShootNearestTarget(pMissile, this.transform.position, MaxTargetingDistance, missileKnockBackModifier, false);
 
-            yield return new WaitForSeconds(Mathf.Lerp(10.0f, 1.0f, healthManager.GetHealthRatio()) * reloadTime);
+            yield return new WaitForSeconds(Mathf.Lerp(1.0f, 0.2f, healthManager.GetHealthRatio()) * reloadTime);
         }
     }
 }
