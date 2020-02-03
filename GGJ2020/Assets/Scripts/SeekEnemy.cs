@@ -52,8 +52,14 @@ public class SeekEnemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public AudioClip clip;
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        AudioSource source = this.gameObject.AddComponent<AudioSource>();
+        source.volume = .1f;
+        source.PlayOneShot(clip);
+
+
         PlayerHealthManager player = collision.gameObject.GetComponent<PlayerHealthManager>();
         if (player != null)
         {
