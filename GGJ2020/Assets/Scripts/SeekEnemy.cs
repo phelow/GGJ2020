@@ -57,6 +57,7 @@ public class SeekEnemy : MonoBehaviour
     {
         AudioSource source = this.gameObject.AddComponent<AudioSource>();
         source.volume = .1f;
+        source.maxDistance = 10.0f;
         source.PlayOneShot(clip);
 
         NexusPull nexusPull = collision.gameObject.GetComponent<NexusPull>();
