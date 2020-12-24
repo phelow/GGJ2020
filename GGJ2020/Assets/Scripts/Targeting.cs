@@ -43,10 +43,28 @@ public static class TargetingHelper
                 continue;
             }
             Vector2 direction = (new Vector2(target.transform.position.x, target.transform.position.y) - shooterPosition).normalized;
-            
+
 
             float distance = Vector2.Distance(target.transform.position, shooterPosition);
             float minDistance = Vector2.Distance(closestTarget.transform.position, shooterPosition);
+
+            if (!targetPlayerTeam)
+            {
+                RaycastHit2D [] hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("PlayerMissiles","EnemyMissile"));
+                if (hit.Length != 1)
+                {
+                    continue;
+                }
+            }
+            else
+            {
+                RaycastHit2D []  hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("PlayerMissiles", "EnemyMissile"));
+                if (hit.Length != 1)
+                {
+                    continue;
+                }
+            }
+
             if (distance < minDistance)
             {
                 closestTarget = target;
