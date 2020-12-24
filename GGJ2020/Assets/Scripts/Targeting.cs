@@ -36,22 +36,23 @@ public static class TargetingHelper
             {
                 continue;
             }
-
-            if (closestTarget == null)
-            {
-                closestTarget = target;
-                continue;
-            }
+            
             Vector2 direction = (new Vector2(target.transform.position.x, target.transform.position.y) - shooterPosition).normalized;
 
 
             float distance = Vector2.Distance(target.transform.position, shooterPosition);
-            float minDistance = Vector2.Distance(closestTarget.transform.position, shooterPosition);
+
+            float minDistance = Mathf.Infinity;
+
+            if (closestTarget != null)
+            {
+                minDistance = Vector2.Distance(closestTarget.transform.position, shooterPosition);
+            }
 
             if (!targetPlayerTeam)
             {
                 RaycastHit2D [] hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("Default"));
-                if (hit.Length != 1)
+                if (hit.Length != 0)
                 {
                     continue;
                 }
@@ -59,7 +60,7 @@ public static class TargetingHelper
             else
             {
                 RaycastHit2D []  hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("Default"));
-                if (hit.Length != 1)
+                if (hit.Length != 0)
                 {
                     continue;
                 }

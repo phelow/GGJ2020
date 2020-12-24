@@ -28,6 +28,7 @@ public class Spawner : MonoBehaviour
             GameObject objectToSpawn = SpawnableObjects[Random.Range(0, SpawnableObjects.Count)];
 
             // Create the object at this point.
+            objectToSpawn.layer = LayerMask.NameToLayer("Enemies");
             GameObject.Instantiate(objectToSpawn, randomPoint, new Quaternion(0, 0, 0, 0), null);
             yield return new WaitForSeconds(interval);
             timeToSpawn *= .98f;
