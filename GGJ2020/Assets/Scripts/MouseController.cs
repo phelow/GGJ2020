@@ -19,7 +19,7 @@ public class MouseController : MonoBehaviour
             return;
         }
 
-        if (collector.TrySendClick())
+        if ((Input.GetMouseButtonDown(0) && collector.TrySendClick()))
         {
             return;
         }

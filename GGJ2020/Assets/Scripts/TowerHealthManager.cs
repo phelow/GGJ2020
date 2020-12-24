@@ -49,5 +49,6 @@ public class TowerHealthManager : HealthManager
         
         GameObject.Instantiate(spawnableTower, transform.position, transform.rotation, null).GetComponent<TowerHealthManager>().TakeHit(new Vector2(0,0),MaxHealth - targetHealth);
         this.TakeHit(new Vector2(0, 0), health - targetHealth);
+        repairSound.Play();
     }
 }
