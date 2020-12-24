@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ClickToStart : MonoBehaviour
 {
-    public void StartGame()
+    private void Update()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("EnemySwarmIntelligenceScene");
+        if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("EnemySwarmIntelligenceScene");
+        }
     }
 }

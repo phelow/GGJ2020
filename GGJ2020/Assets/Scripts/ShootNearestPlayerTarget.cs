@@ -21,7 +21,7 @@ public class ShootNearestPlayerTarget : MonoBehaviour
 
             TargetingHelper.ShootNearestTarget(pMissile, this.transform.position, MaxTargetingDistance, 1.0f, true);
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(5.0f);
         }
     }
 }

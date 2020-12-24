@@ -30,7 +30,7 @@ public class Collectable : MonoBehaviour
 
     [Tooltip("How long a click is visiable")]
     public float secondsToShowClicked = .2f;
-    private float secondsOfClickLeft = 0f;
+    protected float secondsOfClickLeft = 0f;
 
     public UnityEvent OnClicked;
     public Outline outline;
@@ -57,7 +57,7 @@ public class Collectable : MonoBehaviour
         }
     }
 
-    public void SetClickability(ClickabilityEnum newClickability)
+    public virtual void SetClickability(ClickabilityEnum newClickability)
     {
         if (Clickability == ClickabilityEnum.Clicked && secondsOfClickLeft > 0)
         {

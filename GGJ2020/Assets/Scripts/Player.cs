@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     #region  Private Members
     private Rigidbody2D mRigidBody;
+    float lockoutTime = -1.0f;
 
     internal void DrainAllJuice()
     {
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
     internal void CancelClick()
     {
         mMoving = false;
+        lockoutTime = ((juice - mCurrentJuice) / juice) * 1.0f;
     }
 
     public void AddJuice(float addedJuice)
@@ -90,6 +92,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         mRigidBody.drag = friction;
+        lockoutTime -= Time.deltaTime;
 
         faceDirection();
     }
@@ -121,7 +124,15 @@ public class Player : MonoBehaviour
         {
             //drain jet pack
             SubtractJuice(drainRate * Time.deltaTime);
-            mRigidBody.AddForce(transform.up * -1.0f * thrust * mCurrentJuice/juice);
+
+            if (lockoutTime > 0.0f)
+            {
+                mRigidBody.AddForce(transform.up * -0.1f * thrust * mCurrentJuice / juice);
+            }
+            else
+            {
+                mRigidBody.AddForce(transform.up * -1.0f * thrust * mCurrentJuice / juice);
+            }
         }
     }
 

@@ -23,7 +23,7 @@ public class TowerSpawner : MonoBehaviour
 
             // Create the object at this point.
             GameObject.Instantiate(towers[Random.Range(0, towers.Count)], randomPoint, new Quaternion(0, 0, 0, 0), null);
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(10.0f);
         }
     }
 }

@@ -75,7 +75,6 @@ public class Collector : MonoBehaviour
             .Where
             (
                i => i.GetComponent<Collectable>() != null
-               && isInLineOfSight(i)
             )
             .Select(i => i.GetComponent<Collectable>()).ToArray();
 

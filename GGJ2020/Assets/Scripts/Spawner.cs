@@ -15,20 +15,23 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnRoutine(List<GameObject> spawnables)
     {
-        float timeToSpawn = 1.5f;
+        float timeToSpawn = 5.5f;
+        float radians = 0.0f;
         while (true)
         {
+            float interval = timeToSpawn + .25f;
             const float DistanceFromNexus = 100.0f;
             // Pick a random point a fixed distance from this spawner
-            Vector3 randomPoint = this.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized * DistanceFromNexus;
+            Vector3 randomPoint = this.transform.position + new Vector3(Mathf.Cos(radians), Mathf.Sin(radians)).normalized * DistanceFromNexus;
 
             // Choose an object to spawn
             GameObject objectToSpawn = SpawnableObjects[Random.Range(0, SpawnableObjects.Count)];
 
             // Create the object at this point.
             GameObject.Instantiate(objectToSpawn, randomPoint, new Quaternion(0, 0, 0, 0), null);
-            yield return new WaitForSeconds(timeToSpawn + .25f);
+            yield return new WaitForSeconds(interval);
             timeToSpawn *= .98f;
+            radians += interval/10.0f;
         }
     }
 }
