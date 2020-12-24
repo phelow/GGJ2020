@@ -21,4 +21,9 @@ public class Resource : MonoBehaviour
         Sickle.sickle.SetTerminus(this.transform.position);
         Destroy(this.gameObject);
     }
+
+    private void Update()
+    {
+        transform.position = Vector3.Lerp(transform.position, Player.instance.transform.position, Time.deltaTime * .1f);
+    }
 }
