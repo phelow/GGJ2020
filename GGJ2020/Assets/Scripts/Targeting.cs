@@ -50,7 +50,7 @@ public static class TargetingHelper
 
             if (!targetPlayerTeam)
             {
-                RaycastHit2D [] hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("PlayerMissiles","EnemyMissile"));
+                RaycastHit2D [] hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("Default"));
                 if (hit.Length != 1)
                 {
                     continue;
@@ -58,7 +58,7 @@ public static class TargetingHelper
             }
             else
             {
-                RaycastHit2D []  hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("PlayerMissiles", "EnemyMissile"));
+                RaycastHit2D []  hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("Default"));
                 if (hit.Length != 1)
                 {
                     continue;
