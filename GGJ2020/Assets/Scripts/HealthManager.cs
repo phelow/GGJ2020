@@ -24,7 +24,7 @@ public class HealthManager : MonoBehaviour
         
         
         health -= damageToTake;
-        healthBar.SetValue(GetHealthRatio());
+        SetHealth(health);
 
         if (health <= 0)
         {
@@ -39,6 +39,11 @@ public class HealthManager : MonoBehaviour
             OnKilled();
             Destroy(this.gameObject);
         }
+    }
+
+    protected virtual void SetHealth(float health)
+    {
+
     }
 
     protected virtual void OnKilled()

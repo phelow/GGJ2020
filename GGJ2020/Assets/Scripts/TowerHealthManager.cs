@@ -38,8 +38,14 @@ public class TowerHealthManager : HealthManager
 
         Hammer.instance.SetTerminus(this.transform.position);
         ResourceTracker.instance.UseCharge();
-        health = MaxHealth;
+        SetHealth(MaxHealth);
+    }
+
+    protected override void SetHealth(float healthToSet)
+    {
+        health = healthToSet;
         healthBar.SetValue(GetHealthRatio());
+        transform.localScale = Vector3.one * 5.0f * Mathf.Lerp(0.2f, 1.5f, GetHealthRatio());
         repairSound.Play();
     }
 
