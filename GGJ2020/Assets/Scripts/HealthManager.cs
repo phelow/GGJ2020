@@ -15,6 +15,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField]
     private Pullable pullable;
     protected const float MaxHealth = 100.0f;
+    [SerializeField]
     protected float health = MaxHealth;
 
     internal virtual void TakeHit(Vector2 movementVector, float damageToTake = 15.0f)

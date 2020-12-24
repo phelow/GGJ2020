@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 6210929694065671015}
   m_Layer: 12
   m_Name: Short Range Tower
-  m_TagString: Untagged
+  m_TagString: PlayerTowers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f947ecbcaddf7d54583e6763420ec89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectable: {fileID: 0}
   healthBar: {fileID: 7874513385688537884}
   rigidbody2D: {fileID: 7830708415639433395}
   pullable: {fileID: 8775964323209989765}
