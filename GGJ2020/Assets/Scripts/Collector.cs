@@ -23,6 +23,7 @@ public class Collector : MonoBehaviour
         if (lastHovering != null && lastHovering.CanRightClick())
         {
             lastHovering.RightClick();
+            Hammer.instance.SetTerminus(lastHovering.transform.position);
             return true;
         }
 
