@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,6 +26,16 @@ public class Collectable : MonoBehaviour
         , { ClickabilityEnum.Hovering, Color.green } // item that is currently hovered over
         , { ClickabilityEnum.Clicked, Color.white } // item is clicked / activated
     };
+
+    internal virtual bool CanRightClick()
+    {
+        return false;
+    }
+
+    internal virtual void RightClick()
+    {
+        return;
+    }
 
     public ClickabilityEnum Clickability;
 

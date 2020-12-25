@@ -150,6 +150,7 @@ MonoBehaviour:
   healthBar: {fileID: 7874513385688537884}
   rigidbody2D: {fileID: 7830708415639433395}
   pullable: {fileID: 8775964323209989765}
+  health: 100
   repairSound: {fileID: 692707899948914960}
 --- !u!50 &7830708415639433395
 Rigidbody2D:
@@ -250,6 +251,7 @@ MonoBehaviour:
         m_CallState: 2
   outline: {fileID: 0}
   healthManager: {fileID: 6706361682695259550}
+  rigidbody: {fileID: 7830708415639433395}
 --- !u!82 &692707899948914960
 AudioSource:
   m_ObjectHideFlags: 0

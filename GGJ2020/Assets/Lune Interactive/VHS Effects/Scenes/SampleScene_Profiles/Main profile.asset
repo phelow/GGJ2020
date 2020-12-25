@@ -24,13 +24,13 @@ MonoBehaviour:
     value: 0.06
   NoiseScale:
     overrideState: 1
-    value: 22
+    value: 3
   speed:
     overrideState: 1
-    value: 8
+    value: 3
   NoisePower:
     overrideState: 1
-    value: 12
+    value: 6
   NoiseStrength:
     overrideState: 1
     value: 3
@@ -105,7 +105,7 @@ MonoBehaviour:
     value: 1
   Pixels:
     overrideState: 1
-    value: 283
+    value: 500
 --- !u!114 &3479625771317219067
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -155,4 +155,4 @@ MonoBehaviour:
     value: -103
   Threshold:
     overrideState: 1
-    value: 0.5
+    value: 0.737

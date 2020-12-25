@@ -18,6 +18,17 @@ public class Collector : MonoBehaviour
     [Tooltip("Input.GetButtonUp to use for clicking")]
     public string ClickButton = "Fire1";
 
+    internal bool TrySendRightClick()
+    {
+        if (lastHovering != null && lastHovering.CanRightClick())
+        {
+            lastHovering.RightClick();
+            return true;
+        }
+
+        return false;
+    }
+
     [Header("Debug")]
     public Collectable lastHovering;
     public Collectable[] allItems;

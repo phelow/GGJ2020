@@ -13,13 +13,19 @@ public class MouseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!(Input.GetMouseButton(0) || Input.GetMouseButtonDown(0)))
+        if (!(Input.GetMouseButton(0) || Input.GetMouseButtonDown(0) || Input.GetMouseButton(1)))
         {
             player.CancelClick();
             return;
         }
 
         if ((Input.GetMouseButtonDown(0) && collector.TrySendClick()))
+        {
+            return;
+        }
+
+
+        if ((Input.GetMouseButton(1) && collector.TrySendRightClick()))
         {
             return;
         }
