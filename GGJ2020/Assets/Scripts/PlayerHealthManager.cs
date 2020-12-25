@@ -10,6 +10,6 @@ public class PlayerHealthManager : HealthManager
     internal override void TakeHit(Vector2 movementVector, float damageToTake = 10.0f)
     {
         //player.DrainAllJuice();
-        player.MoveInDirection(movementVector * 10.0f);
+        player.MoveInDirection(movementVector * 1000.0f);
     }
 }
