@@ -107,7 +107,10 @@ public class Collector : MonoBehaviour
         }
 
         lastHovering = closest;
-        lastHovering?.SetClickability(Collectable.ClickabilityEnum.Clickable);
+        if (lastHovering!= null && lastHovering.CanClick())
+        {
+            lastHovering?.SetClickability(Collectable.ClickabilityEnum.Clickable);
+        }
     }
 
     [SerializeField]

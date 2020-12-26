@@ -11,7 +11,7 @@ public class TowerCollectable : Collectable
     private Rigidbody2D rigidbody;
     public override bool CanClick()
     {
-        return healthManager.GetHealthRatio() != 1.0f;
+        return healthManager.GetHealthRatio() <= .9f && ResourceTracker.instance.HasCharge();
     }
 
     internal override bool CanRightClick()
