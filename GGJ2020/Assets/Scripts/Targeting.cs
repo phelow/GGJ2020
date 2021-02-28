@@ -48,23 +48,12 @@ public static class TargetingHelper
             {
                 minDistance = Vector2.Distance(closestTarget.transform.position, shooterPosition);
             }
-
-            if (!targetPlayerTeam)
-            {
-                RaycastHit2D [] hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("Default"));
+            
+                RaycastHit2D[] hit = AreThereObstacles(shooterPosition, direction, distance);
                 if (hit.Length != 0)
                 {
                     continue;
                 }
-            }
-            else
-            {
-                RaycastHit2D []  hit = Physics2D.RaycastAll(target.transform.position, direction, distance, LayerMask.GetMask("Default"));
-                if (hit.Length != 0)
-                {
-                    continue;
-                }
-            }
 
             if (distance < minDistance)
             {
@@ -79,5 +68,13 @@ public static class TargetingHelper
 
             missile.AssignTarget(closestTarget.gameObject, missileKnockbackModifier, targetPlayerTeam);
         }
+    }
+
+    private static RaycastHit2D[] AreThereObstacles(Vector3 startingPoint, Vector2 direction, float distance)
+    {
+        float modifiedDistance = distance + 4.0f;
+        RaycastHit2D[] hit = Physics2D.RaycastAll(startingPoint, direction, modifiedDistance, LayerMask.GetMask("Default"));
+        Debug.DrawRay(startingPoint, direction * modifiedDistance);
+        return hit;
     }
 }
