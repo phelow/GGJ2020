@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2115362153589150684}
   m_Layer: 0
   m_Name: Resource
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,6 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!58 &1088876203261075722
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,6 +137,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2115362153589150684}
+        m_TargetAssemblyTypeName: 
         m_MethodName: PickupResource
         m_Mode: 1
         m_Arguments:

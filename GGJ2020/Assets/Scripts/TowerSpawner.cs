@@ -25,7 +25,7 @@ public class TowerSpawner : MonoBehaviour
             }
 
             int chosenIndex = Random.Range(0, spawnedTowers.Length - 1);
-            int chosenTower = Random.Range(0, towers.Count - 1);
+            int chosenTower = Random.Range(0, towers.Count);
             spawnedTowers[chosenIndex].GetComponentInChildren<TowerHealthManager>().SpawnTower(towers[chosenTower]);
 
             yield return new WaitForSeconds(10.0f);
