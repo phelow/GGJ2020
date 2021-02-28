@@ -9,16 +9,16 @@ public class TowerTargeting : MonoBehaviour
     private GameObject pMissile;
 
     [SerializeField]
-    private HealthManager healthManager;
+    protected HealthManager healthManager;
 
     [SerializeField]
     private Rigidbody2D rigidbody2D;
 
     [SerializeField]
-    float MaxTargetingDistance = 35.0f;
+    protected const float MaxTargetingDistance = 35.0f;
 
     [SerializeField]
-    float reloadTime = 1.0f;
+    protected float reloadTime = 1.0f;
 
     [SerializeField]
     float missileKnockBackModifier = 1.0f;
@@ -44,7 +44,7 @@ public class TowerTargeting : MonoBehaviour
         }
     }
 
-    private IEnumerator ShootEnemies()
+    protected virtual IEnumerator ShootEnemies()
     {
         while (true)
         {
